@@ -1,5 +1,5 @@
 import "./header.scss";
-import { slide as Menu } from "react-burger-menu";
+// import HamburgerMenu from "../HamburgerMenu/HamburgerMenu";
 
 const Header = () => {
   return (
@@ -13,6 +13,7 @@ const Header = () => {
               </a>
             </li>
           </div>
+
           <div className="nav__right-side">
             <li className="nav__item">
               <a className="nav__link" href={"#"}>
