@@ -7,6 +7,7 @@ import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
 import Meet from "./pages/Meet/Meet";
 import Login from "./pages/Login/Login";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/meet" element={<Meet />} />
           <Route path="/login" element={<Login />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </div>
   );

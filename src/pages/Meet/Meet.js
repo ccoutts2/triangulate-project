@@ -18,8 +18,9 @@ const Meet = () => {
 
   const fetchFriends = async () => {
     try {
-      const response = await axios.get(`${baseURL}/meet`);
+      const response = await axios.get(`${baseURL}/maps`);
       setFriends(response.data);
+      console.log(response.data);
     } catch (error) {
       console.log(error);
     }

@@ -1,0 +1,28 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/breakpoints" as *;
+
+.nav {
+  @include mobile-font;
+  padding: 1rem;
+
+  @include tablet {
+    padding: 1rem 2.25rem;
+  }
+
+  @include desktop {
+    padding: 1rem 5rem;
+    font-size: 1.25rem;
+  }
+
+  &__list {
+    list-style: none;
+    @include flex(row, space-between, center);
+    padding: 0;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $primary-color;
+  }
+}

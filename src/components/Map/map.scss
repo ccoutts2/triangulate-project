@@ -1,5 +1,7 @@
 .map-container {
-  height: 400px;
+  height: 60vh;
+  margin: 1rem;
+  border-radius: 4px;
 }
 
 .filler {
@@ -10,9 +12,10 @@
 .sidebar {
   background-color: rgb(35 55 75 / 90%);
   color: #fff;
-  padding: 6px 12px;
+  padding: 0.75rem;
+  margin: 1rem;
   font-family: monospace;
   z-index: 1;
-  margin: 12px;
+
   border-radius: 4px;
 }
