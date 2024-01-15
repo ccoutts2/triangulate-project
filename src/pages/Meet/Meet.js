@@ -1,4 +1,4 @@
-// import "./Meet.scss";
+import "./meet.scss";
 import Map from "../../components/Map/Map";
 import Friends from "../../components/Friends/Friends";
 import SelectedFriend from "../../components/SelectedFriend/SelectedFriend";
@@ -10,7 +10,7 @@ const Meet = () => {
   const baseURL = process.env.REACT_APP_FRIENDS_API_URL;
 
   const [friends, setFriends] = useState(null);
-  const [selectedFriend, setSelectedFriend] = useState(false);
+  const [selectedFriend, setSelectedFriend] = useState(null);
 
   const handleFriendClick = (friend) => {
     setSelectedFriend(friend);
@@ -18,7 +18,7 @@ const Meet = () => {
 
   const fetchFriends = async () => {
     try {
-      const response = await axios.get(`${baseURL}/maps`);
+      const response = await axios.get(`${baseURL}/friends`);
       setFriends(response.data);
       console.log(response.data);
     } catch (error) {
@@ -31,8 +31,10 @@ const Meet = () => {
   }, []);
   return (
     <main>
-      <Friends friends={friends} handleFriendClick={handleFriendClick} />
-      <SelectedFriend selectedFriend={selectedFriend} />
+      <div className="friends-wrapper">
+        <Friends friends={friends} handleFriendClick={handleFriendClick} />
+        <SelectedFriend selectedFriend={selectedFriend} />
+      </div>
       <Map />
     </main>
   );

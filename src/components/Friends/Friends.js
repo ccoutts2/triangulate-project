@@ -1,20 +1,21 @@
-// import "./friends.scss";
+import "./friends.scss";
 
 const Friends = ({ friends, handleFriendClick }) => {
+  console.log(friends);
   return (
-    <aside>
-      <ul>
+    <aside className="friends">
+      <ul className="friends__list">
         {friends &&
           friends.map((friend) => {
             return (
               <li
                 key={friend.id}
-                className="friend__item"
+                className="friends__item"
                 onClick={() => {
                   handleFriendClick(friend);
                 }}>
-                <img className="friend__image" alt="red box profile"></img>
-                <h3>{friend.name}</h3>
+                <div className="friends__icon"></div>
+                <h3 className="friends__title">{friend.name}</h3>
               </li>
             );
           })}

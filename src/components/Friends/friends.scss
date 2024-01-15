@@ -1,0 +1,32 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/breakpoints" as *;
+
+.friends {
+  padding-top: 1rem;
+  @include mobile-font;
+  @include flex(row, flex-start, center);
+  width: 40%;
+
+  &__list {
+    list-style-type: none;
+    height: 7rem;
+    border-radius: 4px;
+    overflow: scroll;
+
+    padding-left: 1rem;
+  }
+  &__item {
+    @include flex(row, flex-start, center);
+    padding-bottom: 0.5rem;
+  }
+  &__icon {
+    height: 1rem;
+    width: 1rem;
+    background-color: $primary-color;
+  }
+  &__title {
+    font-size: 1rem;
+    padding-left: 1rem;
+  }
+}

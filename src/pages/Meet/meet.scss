@@ -1,0 +1,8 @@
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+
+.friends-wrapper {
+  @include flex(row, center, center);
+}
