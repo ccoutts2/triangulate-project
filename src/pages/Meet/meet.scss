@@ -3,6 +3,10 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/typography" as *;
 
+main {
+  height: 150vh;
+}
+
 .friends-wrapper {
   @include flex(row, flex-start, center);
 }

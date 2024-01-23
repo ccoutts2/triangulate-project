@@ -1,6 +1,6 @@
 # Project Title
 
-Trinagulate
+Triangulate
 
 ## Overview
 
