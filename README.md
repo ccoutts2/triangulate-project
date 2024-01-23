@@ -123,7 +123,7 @@ Response:
     {
         "id": 1,
         "name": "Earl of Essex",
-        "distance": 0.25,
+        "distance": 0.1,
         "rating": 35,
     }
 
@@ -142,7 +142,7 @@ Response:
     {
         "id": 1,
         "name": "Earl of Essex",
-        "distance": 0.25,
+        "distance": 0.1,
         "rating": 35,
     }
 
@@ -161,7 +161,7 @@ Response:
     {
         "id": 1,
         "name": "Earl of Essex",
-        "distance": 0.25,
+        "distance": 0.1,
         "rating": 35,
     }
 
