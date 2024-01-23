@@ -1,7 +1,6 @@
 import "./friends.scss";
 
 const Friends = ({ friends, handleFriendClick }) => {
-  console.log(friends);
   return (
     <aside className="friends">
       <ul className="friends__list">
