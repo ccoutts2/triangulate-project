@@ -1,70 +1,216 @@
-# Getting Started with Create React App
+# Project Title
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Trinagulate
 
-## Available Scripts
+## Overview
 
-In the project directory, you can run:
+Triangulate offers you the opportuntity to find and rate pubs located around your city, while allowing you to find places closest to you and your friends.
 
-### `npm start`
+### Problem
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Triangulate offers the convenience of planning your pub visits for you and friends, allowing you all to visually see where is best to go to. The rating feature allows each user to keep a track of how much they enjoyed each pub, incorporating this feedback into where they go to in future.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+When looking for a pub to go to, Traingulate cuts out the time consuming process of conducting a Google Search and then checking with all your friends to see what pub location is best to get to for everyone. All the data you need is in one place and you can check on behalf of your friends too, as you'll be able to see where they are located.
 
-### `npm test`
+### User Profile
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Pub goers:
+  - people looking for the nearest and best pub to visit
+  - people looking for a hangout spot located conveniently for all friends
+  - people looking to rate pub experiences for tracking and future planning purposes
 
-### `npm run build`
+### Features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- As a user, I want to view a map of all the pubs I've been to in my city so that I can see where I've been to and discover new places to
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- As a user, I want to have the ability to add new pubs to the map, including details such as name, location, and my personal rating
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- As a user, I want to be able to see reviews and ratings of pubs from other users, helping me make informed decisions about which pub to visit
 
-### `npm run eject`
+- As a user, I want to create a profile and add friends so that I can easily coordinate and plan pub outings with them
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- As a user, I want to see my friends' locations on the map in real-time so that I can easily find friends nearby for impromptu plans
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- As a user, I want to select specific friends and view the distance and estimated time it will take for each friend to reach a selected pub
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- As a user, I want a feature that automatically plans a pub crawl route for me, considering the locations of pubs and friends
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Implementation
 
-## Learn More
+### Tech Stack
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- React.js
+- MySQL
+- Node.js
+- Client libraries:
+  - react
+  - react-router-dom
+  - axios
+  - sass
+  - mapbox-gl
+  - react-geolocated
+  - geolib
+- Server libraries:
+  - knex
+  - express
+  - bcrypt for password hashing
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### APIs
 
-### Code Splitting
+- Creating own API from my friends Google Doc of pubs he's visited
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Sitemap
 
-### Analyzing the Bundle Size
+- Home
+- About
+- Meet
+- Register
+- Login
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Mockups
 
-### Making a Progressive Web App
+#### Home Page
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+![](home-screen.png)
 
-### Advanced Configuration
+#### About Page
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+![](about-screen.png)
 
-### Deployment
+#### Meet Page
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+![](meet-screen.png)
 
-### `npm run build` fails to minify
+#### Login Page
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![](login.png)
+
+### Data
+
+#### Login Page
+
+![](sql-diagram.png)
+
+### Endpoints
+
+**GET /pubs**
+
+Parameters:
+
+- homeAddress: user input during login
+- longitude: converted from home address
+- latitude: converted from home address
+
+Response:
+
+    {
+        "id": 1,
+        "name": "Earl of Essex",
+        "distance": 0.25,
+        "rating": 35,
+    }
+
+**GET /pubs/:id**
+
+- Get pub by id
+
+Parameters:
+
+- id: pub id as number
+
+Response:
+
+    {
+        "id": 1,
+        "name": "Earl of Essex",
+        "distance": 0.1,
+        "rating": 35,
+    }
+
+**POST /pubs/:id/rating**
+
+- Logged in user can add their rating of a pub
+
+Parameters:
+
+- id: pub id
+- token: JWT of the logged in user
+- rating: number rating out of 50 in 0.5 increments
+
+Response:
+
+    {
+        "id": 1,
+        "name": "Earl of Essex",
+        "distance": 0.1,
+        "rating": 35,
+    }
+
+**PUT /pubs/:id/rating**
+
+- Logged in user can update their rating of a pub
+
+Parameters:
+
+- id: pub id
+- token: JWT of the logged in user
+- rating: number rating out of 40 in 0.5 increments
+
+Response:
+
+    {
+        "id": 1,
+        "name": "Earl of Essex",
+        "distance": 0.1,
+        "rating": 35,
+    }
+
+**POST /users/register**
+
+- Add a user account
+
+Parameters:
+
+- email: user's email
+- password: user's provided password
+
+Response:
+
+    {
+        "token": "hbcJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6I..."
+
+        }
+
+**POST /users/login**
+
+- Login a user
+
+Parameters:
+
+- email: user's email
+- password: user's provided password
+- homeAddress: user's provided home address
+
+Response:
+
+    {
+    "token": "hbcJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6I..."
+    }
+
+### Auth
+
+See below in Nice-to-haves
+
+## Roadmap
+
+- Figma files
+- Server side function running
+- Build APIs for Friends and Pubs
+- Build out Mapbox functionality
+- Create Database and transfer Friends and Pubs data over to it
+
+## Nice-to-haves
+
+- User authentication and login
+- Calculate pub crawl based on distance between pubs
+- Weather API - for pub crawl feeature
