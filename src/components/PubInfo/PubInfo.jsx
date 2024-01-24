@@ -4,7 +4,7 @@ const PubInfo = ({ selectedPub }) => {
   if (!selectedPub) {
     return <p>Loading..</p>;
   }
-  console.log(selectedPub.address);
+
   return (
     <section className="pub-info">
       <article className="pub-info__row">

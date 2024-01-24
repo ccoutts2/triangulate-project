@@ -2,12 +2,12 @@ import "./meet.scss";
 import Map from "../../components/Map/Map";
 import PubInfo from "../../components/PubInfo/PubInfo";
 import Friends from "../../components/Friends/Friends";
+import PubLocation from "../../components/PubLocation/PubLocation";
 import SelectedFriend from "../../components/SelectedFriend/SelectedFriend";
-// import Map, { Marker, Popup } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
 import axios from "axios";
-import { useRef, useEffect, useState, useMemo } from "react";
+import { useEffect, useState } from "react";
 
 const Meet = () => {
   const baseURL = process.env.REACT_APP_FRIENDS_API_URL;
@@ -19,11 +19,10 @@ const Meet = () => {
     setSelectedFriend(friend);
   };
 
-  // console.log(pubData);
-
   const fetchFriends = async () => {
     try {
       const response = await axios.get(`${baseURL}/friends`);
+      console.log(response.data);
       setFriends(response.data);
     } catch (error) {
       console.log(error);
@@ -65,6 +64,7 @@ const Meet = () => {
       <div className="map-wrapper">
         <Map handlePubClick={handlePubClick} setSelectedPub={setSelectedPub} />
         <PubInfo selectedPub={selectedPub} />
+        <PubLocation fetchFriends={fetchFriends} />
       </div>
     </main>
   );
