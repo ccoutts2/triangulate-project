@@ -1,5 +1,5 @@
 import "./header.scss";
-// import HamburgerMenu from "../HamburgerMenu/HamburgerMenu";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -8,27 +8,27 @@ const Header = () => {
         <ul className="nav__list">
           <div className="nav__left-side">
             <li className="nav__item">
-              <a className="nav__link" href={"#"}>
+              <Link className="nav__link" to={"/"}>
                 TRIANGULATE
-              </a>
+              </Link>
             </li>
           </div>
 
           <div className="nav__right-side">
             <li className="nav__item">
-              <a className="nav__link" href={"#"}>
+              <Link className="nav__link" to={"/about"}>
                 ABOUT
-              </a>
+              </Link>
             </li>
             <li className="nav__item">
-              <a className="nav__link" href={"#"}>
+              <Link className="nav__link" to={"/meet"}>
                 MEET
-              </a>
+              </Link>
             </li>
             <li className="nav__item">
-              <a className="nav__link" href={"#"}>
+              <Link className="nav__link" to={"/login"}>
                 LOGIN
-              </a>
+              </Link>
             </li>
           </div>
         </ul>

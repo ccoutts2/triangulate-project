@@ -19,6 +19,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/meet" element={<Meet />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/pub/:pubId" element={<Meet />} />
         </Routes>
         <Footer />
       </BrowserRouter>

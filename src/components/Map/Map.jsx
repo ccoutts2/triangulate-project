@@ -4,9 +4,10 @@ import axios from "axios";
 import { useRef, useEffect, useState, useMemo } from "react";
 // import Map, { Marker, Popup } from "react-map-gl";
 import mapboxgl from "!mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
+import "https://api.tiles.mapbox.com/mapbox-gl-js/v3.1.0/mapbox-gl.js";
 import "mapbox-gl/dist/mapbox-gl.css";
 
-const Map = () => {
+const Map = ({ setSelectedPub }) => {
   //   // Setting Map State
 
   const mapboxAccessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
@@ -23,11 +24,39 @@ const Map = () => {
     if (map.current) return;
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
-      style: "mapbox://styles/mapbox/dark-v11",
+      style: "mapbox://styles/ccoutts2/clrquw8nm00eg01pj14c96deh",
       center: [lng, lat],
       zoom: zoom,
     });
 
+    // if (!map.current) return;
+    // map.current.on("move", () => {
+    //   setLng(map.current.getCenter().lng.toFixed(4));
+    //   setLat(map.current.getCenter().lat.toFixed(4));
+    //   setZoom(map.current.getZoom().toFixed(2));
+    // });
+
+    map.current.on("click", (event) => {
+      const features = map.current.queryRenderedFeatures(event.point, {
+        layers: ["pubs-in-london"],
+      });
+
+      if (!features.length) {
+        return;
+      }
+      const feature = features[0];
+      console.log(feature.properties);
+
+      setSelectedPub(feature.properties);
+
+      // const popup = new mapboxgl.Popup({ offset: [0, -15] })
+      //   .setLngLat(feature.geometry.coordinates)
+      //   .setHTML(`<h3>${feature.properties.id}</h3><p>${feature.properties.pub}</p>`)
+      //   .addTo(map);
+    });
+  }, []);
+
+  useEffect(() => {
     if (!map.current) return;
     map.current.on("move", () => {
       setLng(map.current.getCenter().lng.toFixed(4));
@@ -45,8 +74,6 @@ const Map = () => {
         const pubData = response.data;
 
         pubData.forEach((pub) => {
-          console.log(pub);
-
           const marker = new mapboxgl.Marker()
             .setLngLat([pub.address.longitude, pub.address.latitude])
             .addTo(map.current);
@@ -64,35 +91,64 @@ const Map = () => {
     fetchData();
   }, []);
 
-  useMemo(() => {
-    const baseURL = process.env.REACT_APP_FRIENDS_API_URL;
+  // useMemo(() => {
+  //   const baseURL = process.env.REACT_APP_FRIENDS_API_URL;
 
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`${baseURL}/friends`);
-        const friendData = response.data;
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get(`${baseURL}/friends`);
+  //       const friendData = response.data;
 
-        friendData.forEach((friend) => {
-          console.log(friend);
+  //       friendData.forEach((friend) => {
+  //         const marker = new mapboxgl.Marker({
+  //           color: "green",
+  //         })
+  //           .setLngLat([friend.homeAddress.longitude, friend.homeAddress.latitude])
+  //           .addTo(map.current);
 
-          const marker = new mapboxgl.Marker({
-            color: "F3180A",
-          })
-            .setLngLat([friend.homeAddress.longitude, friend.homeAddress.latitude])
-            .addTo(map.current);
+  //         const popup = new mapboxgl.Popup({
+  //           offset: 25,
+  //         }).setHTML(`<h4>${friend.name}</h4>`);
+  //         marker.setPopup(popup);
+  //       });
+  //     } catch (error) {
+  //       console.log(error); //
+  //     }
+  //   };
 
-          const popup = new mapboxgl.Popup({
-            offset: 25,
-          }).setHTML(`<h4>${friend.name}</h4>`);
-          marker.setPopup(popup);
-        });
-      } catch (error) {
-        console.log(error); //
-      }
-    };
+  //   fetchData();
+  // }, []);
 
-    fetchData();
-  }, []);
+  // useMemo(() => {
+  //   const baseURL = process.env.REACT_APP_FRIENDS_API_URL;
+
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get(`${baseURL}/maps`);
+  //       const pubData = response.data;
+
+  //       pubData.features.forEach((feature) => {
+  //         const coordinates = feature.geometry.coordinates;
+  //         const properties = feature.properties;
+
+  //         const marker = new mapboxgl.Marker({
+  //           color: "green",
+  //         })
+  //           .setLngLat(coordinates)
+  //           .addTo(map.current);
+
+  //         const popup = new mapboxgl.Popup({
+  //           offset: 25,
+  //         }).setHTML(`<h4>${properties.pub}</h4>`);
+  //         marker.setPopup(popup);
+  //       });
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, []);
 
   return (
     <section>
