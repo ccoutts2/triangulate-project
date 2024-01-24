@@ -34,14 +34,7 @@ const Meet = () => {
     fetchFriends();
   }, []);
 
-  const [selectedPub, setSelectedPub] = useState({
-    id: "",
-    pub: "",
-    address: {
-      latitude: 0,
-      longitude: 0,
-    },
-  });
+  const [selectedPub, setSelectedPub] = useState(null);
 
   const fetchPub = async () => {
     try {

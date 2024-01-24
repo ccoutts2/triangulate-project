@@ -4,11 +4,23 @@
 
 .pub-info {
   @include flex(column, flex-start, center);
-  padding: 1rem;
+  padding-top: 4rem;
 
   &__row {
     @include flex(row, space-between, center);
     width: 100%;
-    flex: 1;
+    padding: 0.25rem 0;
+    text-align: start;
+    font-size: 0.8rem;
+
+    &--address {
+      border-top: 1px solid $secondary-color;
+      border-bottom: 1px solid $secondary-color;
+    }
+  }
+
+  &__details {
+    text-align: start;
+    width: 50%;
   }
 }
