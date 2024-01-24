@@ -145,6 +145,8 @@ const Map = ({ setSelectedPub }) => {
   //   fetchData();
   // }, []);
 
+  // Find Address Function
+
   return (
     <section className="map">
       <div className="map__sidebar-container">

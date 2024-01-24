@@ -64,7 +64,7 @@ const Meet = () => {
       <div className="map-wrapper">
         <Map handlePubClick={handlePubClick} setSelectedPub={setSelectedPub} />
         <PubInfo selectedPub={selectedPub} />
-        <PubLocation fetchFriends={fetchFriends} />
+        <PubLocation />
       </div>
     </main>
   );
