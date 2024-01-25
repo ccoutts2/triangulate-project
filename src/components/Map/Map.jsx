@@ -7,7 +7,7 @@ import "https://api.tiles.mapbox.com/mapbox-gl-js/v3.1.0/mapbox-gl.js";
 import "mapbox-gl/dist/mapbox-gl.css";
 import marker from "../../assets/icons/marker-editor.svg";
 
-const Map = ({ setSelectedPub }) => {
+const Map = ({ setSelectedPub, setPubs }) => {
   //   // Setting Map State
 
   const mapboxAccessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
@@ -19,6 +19,8 @@ const Map = ({ setSelectedPub }) => {
   const [lng, setLng] = useState(-0.0815);
   const [lat, setLat] = useState(51.54);
   const [zoom, setZoom] = useState(10.8);
+
+  const [jsonData, setJsonData] = useState(null);
 
   useEffect(() => {
     if (map.current) return;

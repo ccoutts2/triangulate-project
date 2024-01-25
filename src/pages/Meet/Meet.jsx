@@ -34,10 +34,11 @@ const Meet = () => {
   }, []);
 
   const [selectedPub, setSelectedPub] = useState(null);
+  const [pubs, setPubs] = useState(null);
 
   const fetchPub = async () => {
     try {
-      const { data } = await axios.get(`${baseURL}/maps`);
+      const { data } = await axios.get(`${baseURL}/pubs`);
       console.log(data);
       setSelectedPub(data);
     } catch (error) {
@@ -47,6 +48,20 @@ const Meet = () => {
 
   useEffect(() => {
     fetchPub();
+  }, []);
+
+  const fetchPubs = async () => {
+    try {
+      const { data } = await axios.get(`${baseURL}/pubs`);
+      console.log(data);
+      setPubs(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchPubs();
   }, []);
 
   if (!selectedPub) return <p>Loading..</p>;
@@ -63,7 +78,11 @@ const Meet = () => {
         <SelectedFriend selectedFriend={selectedFriend} />
       </div>
       <div className="map-wrapper">
-        <Map handlePubClick={handlePubClick} setSelectedPub={setSelectedPub} />
+        <Map
+          handlePubClick={handlePubClick}
+          setSelectedPub={setSelectedPub}
+          setPubs={setPubs}
+        />
         <PubInfo selectedPub={selectedPub} />
         <PubLocation />
       </div>
