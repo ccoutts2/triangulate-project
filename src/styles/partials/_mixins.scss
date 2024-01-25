@@ -1,5 +1,7 @@
-// Flex Mixin
+@use "../partials/variables" as *;
+@use "../partials/breakpoints" as *;
 
+// Flex Mixin
 @mixin flex($direction, $justify, $align) {
   display: flex;
   flex-direction: $direction;
@@ -11,4 +13,46 @@
 
 @mixin mobile-font {
   font-size: 1rem;
+}
+
+// Button
+
+@mixin button {
+  font-size: 0.8rem;
+  font-weight: 600;
+  @include flex(row, center, center);
+  width: 100%;
+  background-color: $primary-color;
+  color: $secondary-color;
+  border: none;
+  border-radius: 1.25rem;
+  cursor: pointer;
+  text-decoration: none;
+  text-transform: capitalize;
+  white-space: nowrap;
+  padding: 0.5rem 1rem;
+
+  @include tablet {
+    width: fit-content;
+  }
+
+  // &:hover {
+  //   background-color: $tertiary-color;
+  // }
+
+  // &--secondary {
+  //   background-color: $color-background-primary;
+  //   color: $color-text-secondary;
+  //   border: 1px $color-border solid;
+
+  //   &:hover {
+  //     background-color: $color-background-primary;
+  //     color: $color-brand-primary;
+  //     border-color: $color-brand-primary;
+  //   }
+  // }
+
+  // &--delete {
+  //   background-color: $color-negative;
+  // }
 }

@@ -3,6 +3,7 @@ import * as geolib from "geolib";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import mapboxgl from "!mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
+import Button from "../Button/Button";
 
 const PubLocation = () => {
   const [center, setCenter] = useState({ latitude: 0, longitude: 0 });
@@ -40,10 +41,16 @@ const PubLocation = () => {
     });
   }, []);
 
+  //   Add onClick to button
+
+  const [showResults, setShowResults] = useState(false);
+  const onClick = () => setShowResults(true);
+
   return (
     <section className="pub-info">
-      <h3>Triangulate</h3>
-      <p>Address: {address}</p>
+      <h3>Triangulate Calculator</h3>
+      <Button className="button" label="Calculate" onClick={onClick} />
+      {showResults ? <p>Address: {address}</p> : null}
     </section>
   );
 };
