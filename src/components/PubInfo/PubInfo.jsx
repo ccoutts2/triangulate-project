@@ -18,7 +18,7 @@ const PubInfo = ({ selectedPub }) => {
       </article>
       <article className="pub-info__row">
         <h3 className="pub-info__title">Rating</h3>
-        <p className="pub-info__details">{selectedPub.id}</p>
+        <p className="pub-info__details">{selectedPub.rating}</p>
       </article>
     </section>
   );

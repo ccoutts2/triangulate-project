@@ -38,6 +38,7 @@ const Meet = () => {
   const fetchPub = async () => {
     try {
       const { data } = await axios.get(`${baseURL}/maps`);
+      console.log(data);
       setSelectedPub(data);
     } catch (error) {
       console.log(error);

@@ -24,14 +24,14 @@ const Map = ({ setSelectedPub }) => {
     if (map.current) return;
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
-      style: "mapbox://styles/ccoutts2/clrquw8nm00eg01pj14c96deh",
+      style: "mapbox://styles/ccoutts2/clrt9em5u00jm01pe7nz59jc4",
       center: [lng, lat],
       zoom: zoom,
     });
 
     map.current.on("click", (event) => {
       const features = map.current.queryRenderedFeatures(event.point, {
-        layers: ["pubs-in-london"],
+        layers: ["london-pubs"],
       });
 
       if (!features.length) {
@@ -100,7 +100,7 @@ const Map = ({ setSelectedPub }) => {
           marker.setPopup(popup);
         });
       } catch (error) {
-        console.log(error); //
+        console.log(error);
       }
     };
 
