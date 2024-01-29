@@ -23,3 +23,22 @@
     border-radius: 4px;
   }
 }
+
+.listings {
+  height: auto;
+  z-index: 4;
+  overflow: auto;
+  background-color: blue;
+  padding-bottom: 60px;
+}
+
+.item {
+  border-bottom: 1px solid #eee;
+  padding: 10px;
+  text-decoration: none;
+}
+.title {
+  display: block;
+  color: #00853e;
+  font-weight: 700;
+}

@@ -13,7 +13,8 @@
     height: 20vh;
     border-radius: 4px;
     overflow: scroll;
-
+    scrollbar-color: red;
+    scrollbar-width: thin;
     padding-left: 1rem;
   }
   &__item {

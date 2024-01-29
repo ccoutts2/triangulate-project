@@ -4,12 +4,15 @@ import PubInfo from "../../components/PubInfo/PubInfo";
 import Friends from "../../components/Friends/Friends";
 import PubLocation from "../../components/PubLocation/PubLocation";
 import SelectedFriend from "../../components/SelectedFriend/SelectedFriend";
+import Button from "../../components/Button/Button";
+import { useNavigate } from "react-router-dom";
 import "mapbox-gl/dist/mapbox-gl.css";
 
 import axios from "axios";
 import { useEffect, useState } from "react";
 
 const Meet = () => {
+  const navigate = useNavigate();
   const baseURL = process.env.REACT_APP_FRIENDS_API_URL;
 
   const [friends, setFriends] = useState(null);
@@ -71,6 +74,10 @@ const Meet = () => {
     console.log(pub);
   };
 
+  const onClick = () => {
+    navigate("/add-pub");
+  };
+
   return (
     <main>
       <div className="friends-wrapper">
@@ -82,9 +89,14 @@ const Meet = () => {
           handlePubClick={handlePubClick}
           setSelectedPub={setSelectedPub}
           setPubs={setPubs}
+          baseURL={baseURL}
         />
         <PubInfo selectedPub={selectedPub} />
-        <PubLocation />
+        <PubLocation friends={friends} />
+        <section>
+          <p>Want to add more pubs to the list?</p>
+          <Button className="button" label="Click here" onClick={onClick} />
+        </section>
       </div>
     </main>
   );

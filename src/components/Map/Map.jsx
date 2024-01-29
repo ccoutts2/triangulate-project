@@ -6,8 +6,9 @@ import mapboxgl from "!mapbox-gl"; // eslint-disable-line import/no-webpack-load
 import "https://api.tiles.mapbox.com/mapbox-gl-js/v3.1.0/mapbox-gl.js";
 import "mapbox-gl/dist/mapbox-gl.css";
 import marker from "../../assets/icons/marker-editor.svg";
+import LocationList from "../LocationList/LocationList";
 
-const Map = ({ setSelectedPub, setPubs }) => {
+const Map = ({ setSelectedPub, setPubs, baseURL }) => {
   //   // Setting Map State
 
   const mapboxAccessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
@@ -19,8 +20,6 @@ const Map = ({ setSelectedPub, setPubs }) => {
   const [lng, setLng] = useState(-0.0815);
   const [lat, setLat] = useState(51.54);
   const [zoom, setZoom] = useState(10.8);
-
-  const [jsonData, setJsonData] = useState(null);
 
   useEffect(() => {
     if (map.current) return;
@@ -54,6 +53,75 @@ const Map = ({ setSelectedPub, setPubs }) => {
       setZoom(map.current.getZoom().toFixed(2));
     });
   }, []);
+
+  const [jsonData, setJsonData] = useState(null);
+
+  const fetchJson = async () => {
+    try {
+      const { data } = await axios.get(`${baseURL}/pubs`);
+
+      setJsonData(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchJson();
+  }, []);
+
+  useEffect(() => {
+    if (jsonData) {
+      console.log(jsonData);
+      map.current.on("load", () => {
+        map.current.addLayer({
+          id: "locations",
+          type: "circle",
+
+          source: {
+            type: "geojson",
+            data: jsonData,
+          },
+        });
+        buildLocationList(jsonData);
+      });
+
+      map.current.on("click", (event) => {
+        const features = map.current.queryRenderedFeatures(event.point, {
+          layers: ["locations"],
+        });
+
+        if (!features.length) {
+          return;
+        }
+        const feature = features[0];
+        console.log(feature.properties);
+
+        setSelectedPub(feature.properties);
+      });
+    }
+  }, [jsonData]);
+
+  const buildLocationList = (jsonData) => {
+    if (!jsonData) {
+      return null;
+    }
+    return (
+      <div className="listings">
+        {jsonData.features.map((feature) => (
+          <div className="item">
+            <a href="#" className="title">
+              {feature.properties.address}
+            </a>
+            <div className="details">
+              {feature.properties.pub}
+              {feature.properties.rating && `Rating: ${feature.properties.rating}`}
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  };
 
   // useMemo(() => {
   //   const baseURL = process.env.REACT_APP_FRIENDS_API_URL;
