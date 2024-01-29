@@ -106,7 +106,7 @@ const Map = ({ setSelectedPub, setPubs, baseURL }) => {
   function flyToStore(currentFeature) {
     map.current.flyTo({
       center: currentFeature.geometry.coordinates,
-      zoom: 15,
+      zoom: 14,
     });
   }
 
@@ -115,21 +115,18 @@ const Map = ({ setSelectedPub, setPubs, baseURL }) => {
       return null;
     }
     return (
-      <div className="listings">
+      <div className="map__listings">
         {jsonData.features.map((feature) => (
-          <div className="item">
+          <div className="map__item">
             <a
               onClick={() => {
                 flyToStore(feature);
               }}
               href="#"
-              className="title">
-              {feature.properties.address}
-            </a>
-            <div className="details">
+              className="map__title">
               {feature.properties.pub}
-              {feature.properties.rating && `Rating: ${feature.properties.rating}`}
-            </div>
+            </a>
+            <div className="map__details">{feature.properties.address}</div>
           </div>
         ))}
       </div>
@@ -164,37 +161,6 @@ const Map = ({ setSelectedPub, setPubs, baseURL }) => {
     fetchData();
   }, []);
 
-  // useMemo(() => {
-  //   const baseURL = process.env.REACT_APP_FRIENDS_API_URL;
-
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await axios.get(`${baseURL}/maps`);
-  //       const pubData = response.data;
-
-  //       pubData.features.forEach((feature) => {
-  //         const coordinates = feature.geometry.coordinates;
-  //         const properties = feature.properties;
-
-  //         const marker = new mapboxgl.Marker({
-  //           color: "green",
-  //         })
-  //           .setLngLat(coordinates)
-  //           .addTo(map.current);
-
-  //         const popup = new mapboxgl.Popup({
-  //           offset: 25,
-  //         }).setHTML(`<h4>${properties.pub}</h4>`);
-  //         marker.setPopup(popup);
-  //       });
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
-
   // Find Address Function
 
   const listings = buildLocationList(jsonData);
@@ -206,7 +172,7 @@ const Map = ({ setSelectedPub, setPubs, baseURL }) => {
           Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
         </div>
       </div>
-      <section className="mapping__container">
+      <section className="map__desktop-container">
         {listings}
         <div ref={mapContainer} className="map__container"></div>
       </section>

@@ -1,12 +1,16 @@
 @use "../../styles/partials/breakpoints" as *;
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/resets" as *;
+@use "../../styles/partials/mixins" as *;
 
 .map {
-  // width: 50%;
   &__sidebar-container {
     border-top: 1px solid $secondary-color;
     border-bottom: 1px solid $secondary-color;
+
+    @include desktop {
+      padding-inline: 4rem;
+    }
   }
 
   &__sidebar {
@@ -18,35 +22,65 @@
     border-radius: 4px;
   }
 
+  &__desktop-container {
+    display: flex;
+    height: 60vh;
+
+    @include desktop {
+      padding: 0 3.5rem;
+    }
+  }
+
   &__container {
     margin-top: 0.25rem;
     height: 100%;
     border-radius: 4px;
     width: 100%;
   }
+
+  &__listings {
+    display: none;
+
+    @include desktop {
+      @include flex(column, center, center);
+      height: auto;
+      z-index: 4;
+      overflow-y: scroll;
+      padding-bottom: 3.7rem;
+      width: 20%;
+    }
+  }
+
+  &__item {
+    border-bottom: 1px solid #eee;
+    height: 100%;
+    padding: 0.625rem;
+    text-decoration: none;
+  }
+
+  &__title {
+    display: block;
+    color: $primary-color;
+    font-weight: 700;
+  }
+
+  &__details {
+    color: black;
+  }
 }
 
-.mapping__container {
-  display: flex;
-  height: 60vh;
-  padding: 0 6rem;
+::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+  border-left: 0;
+  background: rgba(0, 0, 0, 0.1);
 }
 
-.listings {
-  height: auto;
-  z-index: 4;
-  overflow-y: scroll;
-  padding-bottom: 60px;
-  width: 20%;
+::-webkit-scrollbar-track {
+  background: none;
 }
 
-.item {
-  border-bottom: 1px solid #eee;
-  padding: 10px;
-  text-decoration: none;
-}
-.title {
-  display: block;
-  color: #00853e;
-  font-weight: 700;
+::-webkit-scrollbar-thumb {
+  background: $primary-color;
+  border-radius: 0;
 }

@@ -2,7 +2,6 @@ import "./add-new-pub.scss";
 import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import Button from "../../components/Button/Button";
 import PubRating from "../../components/PubRating/PubRating";
 import AddPubForm from "../../components/AddPubForm/AddPubForm";
 
@@ -14,6 +13,8 @@ const AddNewPub = () => {
     rating3: "",
     rating4: "",
     rating5: "",
+    pub: "",
+    address: "",
   });
 
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -22,13 +23,31 @@ const AddNewPub = () => {
     setFormFields({ ...formFields, [event.target.name]: event.target.value });
   };
 
+  const isNameValid = () => {
+    if (!formFields.pub.length) {
+      return false;
+    }
+
+    return true;
+  };
+
+  const isAddressValid = () => {
+    if (!formFields.address.length) {
+      return false;
+    }
+
+    return true;
+  };
+
   const isFormValid = () => {
     if (
       !formFields.rating1 ||
       !formFields.rating2 ||
       !formFields.rating3 ||
       !formFields.rating4 ||
-      !formFields.rating5
+      !formFields.rating5 ||
+      !isNameValid() ||
+      !isAddressValid()
     ) {
       return false;
     }
