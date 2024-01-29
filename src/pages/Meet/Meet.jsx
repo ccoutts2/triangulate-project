@@ -25,7 +25,6 @@ const Meet = () => {
   const fetchFriends = async () => {
     try {
       const response = await axios.get(`${baseURL}/friends`);
-      console.log(response.data);
       setFriends(response.data);
     } catch (error) {
       console.log(error);
@@ -56,7 +55,6 @@ const Meet = () => {
   const fetchPubs = async () => {
     try {
       const { data } = await axios.get(`${baseURL}/pubs`);
-      console.log(data);
       setPubs(data);
     } catch (error) {
       console.log(error);
@@ -71,7 +69,6 @@ const Meet = () => {
 
   const handlePubClick = (pub) => {
     setSelectedPub(pub);
-    console.log(pub);
   };
 
   const onClick = () => {

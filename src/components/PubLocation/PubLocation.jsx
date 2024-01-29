@@ -9,13 +9,10 @@ const PubLocation = ({ friends }) => {
   const [center, setCenter] = useState({ latitude: 0, longitude: 0 });
   const [address, setAddress] = useState(null);
 
-  console.log(friends);
-
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(() => {
       const coordinates = geolib.getCenter(
         friends.map((friend) => {
-          console.log(friend);
           return {
             latitude: friend.homeAddress.latitude,
             longitude: friend.homeAddress.longitude,

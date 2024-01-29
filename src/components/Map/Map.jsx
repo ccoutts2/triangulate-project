@@ -7,6 +7,7 @@ import "https://api.tiles.mapbox.com/mapbox-gl-js/v3.1.0/mapbox-gl.js";
 import "mapbox-gl/dist/mapbox-gl.css";
 import marker from "../../assets/icons/marker-editor.svg";
 import LocationList from "../LocationList/LocationList";
+import { clearStorage } from "mapbox-gl";
 
 const Map = ({ setSelectedPub, setPubs, baseURL }) => {
   //   // Setting Map State
@@ -39,7 +40,6 @@ const Map = ({ setSelectedPub, setPubs, baseURL }) => {
         return;
       }
       const feature = features[0];
-      console.log(feature.properties);
 
       setSelectedPub(feature.properties);
     });
@@ -53,6 +53,8 @@ const Map = ({ setSelectedPub, setPubs, baseURL }) => {
       setZoom(map.current.getZoom().toFixed(2));
     });
   }, []);
+
+  // Fetch Pub Data to display on Map - passed down as props to Map component
 
   const [jsonData, setJsonData] = useState(null);
 
@@ -70,9 +72,10 @@ const Map = ({ setSelectedPub, setPubs, baseURL }) => {
     fetchJson();
   }, []);
 
+  // Display Pub Data on map
+
   useEffect(() => {
     if (jsonData) {
-      console.log(jsonData);
       map.current.on("load", () => {
         map.current.addLayer({
           id: "locations",
@@ -83,7 +86,6 @@ const Map = ({ setSelectedPub, setPubs, baseURL }) => {
             data: jsonData,
           },
         });
-        buildLocationList(jsonData);
       });
 
       map.current.on("click", (event) => {
@@ -95,12 +97,18 @@ const Map = ({ setSelectedPub, setPubs, baseURL }) => {
           return;
         }
         const feature = features[0];
-        console.log(feature.properties);
 
         setSelectedPub(feature.properties);
       });
     }
   }, [jsonData]);
+
+  function flyToStore(currentFeature) {
+    map.current.flyTo({
+      center: currentFeature.geometry.coordinates,
+      zoom: 15,
+    });
+  }
 
   const buildLocationList = (jsonData) => {
     if (!jsonData) {
@@ -110,7 +118,12 @@ const Map = ({ setSelectedPub, setPubs, baseURL }) => {
       <div className="listings">
         {jsonData.features.map((feature) => (
           <div className="item">
-            <a href="#" className="title">
+            <a
+              onClick={() => {
+                flyToStore(feature);
+              }}
+              href="#"
+              className="title">
               {feature.properties.address}
             </a>
             <div className="details">
@@ -122,32 +135,6 @@ const Map = ({ setSelectedPub, setPubs, baseURL }) => {
       </div>
     );
   };
-
-  // useMemo(() => {
-  //   const baseURL = process.env.REACT_APP_FRIENDS_API_URL;
-
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await axios.get(`${baseURL}/maps`);
-  //       const pubData = response.data;
-
-  //       pubData.forEach((pub) => {
-  //         const marker = new mapboxgl.Marker()
-  //           .setLngLat([pub.address.longitude, pub.address.latitude])
-  //           .addTo(map.current);
-
-  //         const popup = new mapboxgl.Popup({ offset: 25 })
-  //           .addClassName("custom-marker")
-  //           .setHTML(`<h4>${pub.pub}</h4>`);
-  //         marker.setPopup(popup);
-  //       });
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
 
   useMemo(() => {
     const baseURL = process.env.REACT_APP_FRIENDS_API_URL;
@@ -210,6 +197,8 @@ const Map = ({ setSelectedPub, setPubs, baseURL }) => {
 
   // Find Address Function
 
+  const listings = buildLocationList(jsonData);
+
   return (
     <section className="map">
       <div className="map__sidebar-container">
@@ -217,7 +206,11 @@ const Map = ({ setSelectedPub, setPubs, baseURL }) => {
           Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
         </div>
       </div>
-      <div ref={mapContainer} className="map__container"></div>
+      <section className="mapping__container">
+        {listings}
+        <div ref={mapContainer} className="map__container"></div>
+      </section>
+      {}
     </section>
   );
 };

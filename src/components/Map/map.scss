@@ -3,6 +3,7 @@
 @use "../../styles/partials/resets" as *;
 
 .map {
+  // width: 50%;
   &__sidebar-container {
     border-top: 1px solid $secondary-color;
     border-bottom: 1px solid $secondary-color;
@@ -19,17 +20,24 @@
 
   &__container {
     margin-top: 0.25rem;
-    height: 60vh;
+    height: 100%;
     border-radius: 4px;
+    width: 100%;
   }
+}
+
+.mapping__container {
+  display: flex;
+  height: 60vh;
+  padding: 0 6rem;
 }
 
 .listings {
   height: auto;
   z-index: 4;
-  overflow: auto;
-  background-color: blue;
+  overflow-y: scroll;
   padding-bottom: 60px;
+  width: 20%;
 }
 
 .item {
