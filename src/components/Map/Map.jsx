@@ -117,7 +117,7 @@ const Map = ({ setSelectedPub, setPubs, baseURL }) => {
     return (
       <div className="map__listings">
         {jsonData.features.map((feature) => (
-          <div className="map__item">
+          <div key={feature.properties.id} className="map__item">
             <a
               onClick={() => {
                 flyToStore(feature);

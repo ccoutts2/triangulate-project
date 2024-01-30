@@ -1,5 +1,6 @@
 import "./header.scss";
 import { Link } from "react-router-dom";
+import logo from "../../assets/icons/triangulate-logo.svg";
 
 const Header = () => {
   return (
@@ -9,7 +10,11 @@ const Header = () => {
           <div className="nav__left-side">
             <li className="nav__item">
               <Link className="nav__link" to={"/"}>
-                TRIANGULATE
+                <img
+                  src={logo}
+                  className="nav__logo"
+                  alt="triangle with triangulate text"
+                />
               </Link>
             </li>
           </div>

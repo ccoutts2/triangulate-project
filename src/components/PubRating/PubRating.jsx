@@ -5,6 +5,8 @@ import { Link, useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 
 const PubRating = ({ onChange, handleSubmit }) => {
+  const [totalRating, setTotalRating] = useState(0);
+
   const renderRatingInputs = (questionNumber) => {
     const labels = ["0", "2", "4", "6", "8", "10"];
 
@@ -25,10 +27,12 @@ const PubRating = ({ onChange, handleSubmit }) => {
     ));
   };
 
+  // const updateRating =
+
   return (
     <section className="pub-ratings">
       <h2 className="pub-ratings__header">Add a Rating</h2>
-      <form className="pub-ratings__form">
+      <div className="pub-ratings__form">
         {/* Question 1 */}
         <div className="pub-ratings__question-container">
           <h3 className="pub-ratings__title">Prices</h3>
@@ -58,12 +62,9 @@ const PubRating = ({ onChange, handleSubmit }) => {
           <h3 className="pub-ratings__title">Service</h3>
           <div className="pub-ratings__container">{renderRatingInputs(5)}</div>
         </div>
-        <Button
-          className="pub-ratings__button"
-          label="Add Pub"
-          onClick={handleSubmit}
-        />
-      </form>
+
+        <p>Rating:</p>
+      </div>
     </section>
   );
 };

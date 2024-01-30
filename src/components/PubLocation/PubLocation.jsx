@@ -22,7 +22,7 @@ const PubLocation = ({ friends }) => {
 
       setCenter(coordinates);
 
-      // Revers Geocode to retrieve address from coordinates
+      // Reverse Geocode to retrieve address from coordinates
 
       const mapboxAccessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
       const mapBoxURL = "https://api.mapbox.com/geocoding/v5/mapbox.places";

@@ -1,13 +1,10 @@
 import "./add-pub-form.scss";
-import { useState } from "react";
-import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
 
 const AddPubForm = ({ onChange }) => {
   return (
     <section className="add-pub">
       <h2 className="add-pub__header">Add a Pub</h2>
-      <form className="add-pub__form">
+      <div className="add-pub__form">
         <label htmlFor="pub" className="add-pub__label">
           Pub:
         </label>
@@ -32,7 +29,7 @@ const AddPubForm = ({ onChange }) => {
             ? `${formFields.description.length} / 300`
             : ""}
         </p> */}
-      </form>
+      </div>
     </section>
   );
 };

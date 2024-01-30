@@ -4,6 +4,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import PubRating from "../../components/PubRating/PubRating";
 import AddPubForm from "../../components/AddPubForm/AddPubForm";
+import Button from "../../components/Button/Button";
 
 const AddNewPub = () => {
   const navigate = useNavigate();
@@ -55,9 +56,16 @@ const AddNewPub = () => {
     return true;
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+
+    const newPub = {
+      pub: event.target.pub.value,
+      address: event.target.address.value,
+    };
+
     if (isFormValid()) {
+      await axios.post("http://localhost:8000" + "/pubs", newPub);
       setFormSubmitted(true);
       setTimeout(() => {
         setFormSubmitted(false);
@@ -69,8 +77,11 @@ const AddNewPub = () => {
   return (
     <main>
       <h1></h1>
-      <AddPubForm onChange={onChange} />
-      <PubRating onChange={onChange} handleSubmit={handleSubmit} />
+      <form onSubmit={handleSubmit}>
+        <AddPubForm onChange={onChange} />
+        <PubRating onChange={onChange} />
+        <Button className="pub-ratings__button" label="Add Pub" />
+      </form>
     </main>
   );
 };
