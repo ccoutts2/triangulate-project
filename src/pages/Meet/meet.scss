@@ -3,8 +3,8 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/typography" as *;
 
-main {
-  height: 150vh;
+.meet-page {
+  height: 130vh;
 }
 
 .friends-wrapper {
@@ -14,9 +14,4 @@ main {
 .map-wrapper {
   height: 50vh;
   padding: 1rem;
-}
-
-.friend-marker {
-  color: blue;
-  background-color: blue;
 }

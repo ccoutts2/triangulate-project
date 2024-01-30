@@ -23,10 +23,11 @@
   }
 
   &__desktop-container {
-    display: flex;
+    @include flex(column-reverse, center, center);
     height: 60vh;
 
-    @include desktop {
+    @include tablet {
+      @include flex(row, flex-start, stretch);
       padding: 0 3.5rem;
     }
   }
@@ -49,12 +50,13 @@
       z-index: 4;
       overflow-y: scroll;
       padding-bottom: 3.7rem;
-      width: 40%;
+      width: 20%;
     }
   }
 
   &__item {
-    height: 20%;
+    height: 30%;
+    width: 100%;
 
     @include tablet {
       border-bottom: 1px solid #eee;
@@ -67,7 +69,8 @@
   &__title {
     display: block;
     color: $primary-color;
-    font-weight: 700;
+    font-weight: 400;
+    font-size: 0.75rem;
   }
 
   &__details {

@@ -76,7 +76,7 @@ const Meet = () => {
   };
 
   return (
-    <main>
+    <main className="meet-page">
       <div className="friends-wrapper">
         <Friends friends={friends} handleFriendClick={handleFriendClick} />
         <SelectedFriend selectedFriend={selectedFriend} />
