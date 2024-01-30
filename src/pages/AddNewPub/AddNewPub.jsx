@@ -77,10 +77,12 @@ const AddNewPub = () => {
   return (
     <main>
       <h1></h1>
-      <form onSubmit={handleSubmit}>
+      <form className="pub-form" onSubmit={handleSubmit}>
         <AddPubForm onChange={onChange} />
         <PubRating onChange={onChange} />
-        <Button className="pub-ratings__button" label="Add Pub" />
+        <div className="pub-form__button-container">
+          <Button className="pub-form__button" label="Add Pub" />
+        </div>
       </form>
     </main>
   );

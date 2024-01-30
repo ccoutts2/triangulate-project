@@ -4,8 +4,12 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 
-const PubRating = ({ onChange, handleSubmit }) => {
+const PubRating = ({ onChange }) => {
   const [totalRating, setTotalRating] = useState(0);
+
+  const onOptionChange = (e) => {
+    setTotalRating(e.target.value);
+  };
 
   const renderRatingInputs = (questionNumber) => {
     const labels = ["0", "2", "4", "6", "8", "10"];
@@ -21,13 +25,11 @@ const PubRating = ({ onChange, handleSubmit }) => {
           name={`rating${questionNumber}`}
           id={`rating${questionNumber}_${index}`}
           value={index * 2}
-          onChange={onChange}
+          onChange={onOptionChange}
         />
       </div>
     ));
   };
-
-  // const updateRating =
 
   return (
     <section className="pub-ratings">
@@ -63,7 +65,11 @@ const PubRating = ({ onChange, handleSubmit }) => {
           <div className="pub-ratings__container">{renderRatingInputs(5)}</div>
         </div>
 
-        <p>Rating:</p>
+        <p className="pub-ratings__result">
+          Don't worry about counting, I'll take care of that for you{" "}
+          <p className="pub-ratings__arrow">&#8675;</p>
+        </p>
+        <p className="pub-ratings__result">Rating: {totalRating}</p>
       </div>
     </section>
   );

@@ -2,39 +2,19 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
-.pub-ratings {
-  padding-inline: 1rem;
+.pub-form {
+  &__button-container {
+    padding: 1rem 1rem 0;
 
-  &__form {
-    @include flex(column, center, center);
-    padding: 1rem 0;
+    @include tablet {
+      padding-inline: 2.25rem;
+    }
+
+    @include desktop {
+      padding-inline: 5rem;
+    }
   }
-
-  &__question-container {
-    padding: 0.5rem;
-    @include flex(column, center, center);
-    width: 100%;
-  }
-
-  &__title {
-    padding-bottom: 0.5rem;
-  }
-
-  &__container {
-    @include flex(row, space-evenly, center);
-    width: 100%;
-  }
-
-  &__input-container {
-    @include flex(column-reverse, center, center);
-  }
-
-  &__radio {
-    @include flex(column, center, center);
-  }
-
   &__button {
     @include button;
-    width: 30%;
   }
 }
