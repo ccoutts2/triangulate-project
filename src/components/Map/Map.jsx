@@ -6,7 +6,6 @@ import mapboxgl from "!mapbox-gl"; // eslint-disable-line import/no-webpack-load
 import "https://api.tiles.mapbox.com/mapbox-gl-js/v3.1.0/mapbox-gl.js";
 import "mapbox-gl/dist/mapbox-gl.css";
 import marker from "../../assets/icons/marker-editor.svg";
-import LocationList from "../LocationList/LocationList";
 import { clearStorage } from "mapbox-gl";
 
 const Map = ({ setSelectedPub, setPubs, baseURL }) => {
