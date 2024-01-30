@@ -9,14 +9,16 @@ import Button from "../../components/Button/Button";
 const AddNewPub = () => {
   const navigate = useNavigate();
   const [formFields, setFormFields] = useState({
-    rating1: "",
-    rating2: "",
-    rating3: "",
-    rating4: "",
-    rating5: "",
+    rating1: 0,
+    rating2: 0,
+    rating3: 0,
+    rating4: 0,
+    rating5: 0,
     pub: "",
     address: "",
   });
+
+  console.log(formFields);
 
   const [formSubmitted, setFormSubmitted] = useState(false);
 
@@ -62,6 +64,12 @@ const AddNewPub = () => {
     const newPub = {
       pub: event.target.pub.value,
       address: event.target.address.value,
+      rating:
+        Number(formFields.rating1) +
+        Number(formFields.rating2) +
+        Number(formFields.rating3) +
+        Number(formFields.rating4) +
+        Number(formFields.rating5),
     };
 
     if (isFormValid()) {
@@ -78,7 +86,7 @@ const AddNewPub = () => {
     <>
       <form className="pub-form" onSubmit={handleSubmit}>
         <AddPubForm onChange={onChange} />
-        <PubRating onChange={onChange} />
+        <PubRating formFields={formFields} onChange={onChange} />
         <div className="pub-form__button-container">
           <Button className="pub-form__button" label="Add Pub" />
         </div>
