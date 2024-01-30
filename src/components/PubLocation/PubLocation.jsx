@@ -44,28 +44,13 @@ const PubLocation = ({ friends }) => {
 
   // useEffect(() => {
   //   const geoLocation = geolib.getDistance(
-  //     { latitude: 51.5103, longitude: 7.49347 },
-  //     { latitude: "51° 31' N", longitude: "7° 28' E" }
+  //     { latitude: 51.5333, longitude: -0.07985 },
+  //     { latitude: 51.52007, longitude: -0.10544 }
   //   );
 
   //   console.log(geoLocation);
 
-  //   navigator.geolocation.getCurrentPosition(
-  //     (position) => {
-  //       console.log(
-  //         "You are ",
-  //         position.coords,
-  //         geolib.getDistance(position.coords, {
-  //           latitude: 51.525,
-  //           longitude: 7.4575,
-  //         }),
-  //         "meters away from 51.525, 7.4575"
-  //       );
-  //     },
-  //     () => {
-  //       alert("Position could not be determined.");
-  //     }
-  //   );
+  //   geoLocation();
   // }, []);
 
   //   Add onClick to button

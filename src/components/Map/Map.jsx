@@ -175,7 +175,6 @@ const Map = ({ setSelectedPub, setPubs, baseURL }) => {
         {listings}
         <div ref={mapContainer} className="map__container"></div>
       </section>
-      {}
     </section>
   );
 };

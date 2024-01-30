@@ -55,7 +55,7 @@
   }
 
   &__item {
-    height: 30%;
+    height: 4rem;
     width: 100%;
 
     @include tablet {
@@ -71,6 +71,7 @@
     color: $primary-color;
     font-weight: 400;
     font-size: 0.75rem;
+    width: 8rem;
   }
 
   &__details {
