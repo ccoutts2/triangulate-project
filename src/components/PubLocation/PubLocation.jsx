@@ -5,7 +5,7 @@ import axios from "axios";
 import mapboxgl from "!mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
 import Button from "../Button/Button";
 
-const PubLocation = ({ friends }) => {
+const PubLocation = ({ pubs, friends }) => {
   const [center, setCenter] = useState({ latitude: 0, longitude: 0 });
   const [address, setAddress] = useState(null);
 
@@ -42,16 +42,39 @@ const PubLocation = ({ friends }) => {
     });
   }, []);
 
+  // const [pubDistance, setPubDistance] = useState(null);
+
   // useEffect(() => {
-  //   const geoLocation = geolib.getDistance(
-  //     { latitude: 51.5333, longitude: -0.07985 },
-  //     { latitude: 51.52007, longitude: -0.10544 }
+  //   navigator.geolocation.getCurrentPosition(
+  //     (position) => {
+  //       console.log(position);
+  //       const userCoords = {
+  //         latitude: position.coords.latitude,
+  //         longitude: position.coords.longitude,
+  //       };
+  //       console.log(
+  //         "You are ",
+  //         geolib.getDistance(
+  //           userCoords,
+  //           pubs.features.map((pub) => {
+  //             console.log(pub.geometry.coordinates[1]);
+  //             console.log(pub.geometry.coordinates[0]);
+  //             return {
+  //               latitude: pub.geometry.coordinates[1],
+  //               longitude: pub.geometry.coordinates[0],
+  //             };
+  //           })
+  //         ),
+  //         "meters away from address"
+  //       );
+  //     },
+  //     () => {
+  //       alert("Position could not be determined.");
+  //     }
   //   );
-
-  //   console.log(geoLocation);
-
-  //   geoLocation();
   // }, []);
+
+  // Idea is to then sort the list by distance so you can see the closest pubs to go to - pub crawl generation
 
   //   Add onClick to button
 
@@ -59,10 +82,12 @@ const PubLocation = ({ friends }) => {
   const onClick = () => setShowResults(true);
 
   return (
-    <section className="pub-info">
-      <h3>Triangulate Calculator</h3>
-      <Button className="button" label="Calculate" onClick={onClick} />
-      {showResults ? <p>Address: {address}</p> : null}
+    <section className="pub-distance">
+      <p className="pub-distance__text">
+        Ever wondered where might be best to meet your friends?
+      </p>
+      <Button className="button" label="Triangulate" onClick={onClick} />
+      {showResults ? <p className="pub-distance__address-text">{address}</p> : null}
     </section>
   );
 };

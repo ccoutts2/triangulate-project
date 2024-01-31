@@ -4,7 +4,15 @@
 @use "../../styles/partials/typography" as *;
 
 .meet-page {
-  height: 130vh;
+  height: 145vh;
+
+  &__add-pub-section {
+    padding: 1rem 0;
+  }
+
+  &__add-pub-text {
+    padding-bottom: 0.5rem;
+  }
 }
 
 .friends-wrapper {

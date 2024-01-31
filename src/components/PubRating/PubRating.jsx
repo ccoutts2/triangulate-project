@@ -1,15 +1,8 @@
 import "./pub-rating.scss";
 import { useState } from "react";
-import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
-import Button from "../../components/Button/Button";
 
 const PubRating = ({ onChange, formFields }) => {
   const [totalRating, setTotalRating] = useState(0);
-
-  const onOptionChange = (e) => {
-    setTotalRating(e.target.value);
-  };
 
   const renderRatingInputs = (questionNumber) => {
     const labels = ["0", "2", "4", "6", "8", "10"];

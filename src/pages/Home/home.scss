@@ -1,0 +1,50 @@
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.home-page {
+  padding-inline: 1rem;
+
+  @include tablet {
+    padding-inline: 2.25rem;
+  }
+
+  @include desktop {
+    padding-inline: 5rem;
+  }
+
+  &__red-boxes {
+    margin-top: 3rem;
+    height: 10rem;
+    width: 50%;
+    @include flex(row, flex-start, center);
+  }
+
+  &__boxes-col-1 {
+    width: 50%;
+    height: 10rem;
+    @include flex(column, space-between, stretch);
+  }
+
+  &__box-1 {
+    background-color: $primary-color;
+    height: 4rem;
+    width: 4rem;
+  }
+
+  &__box-2 {
+    background-color: $primary-color;
+    height: 4rem;
+    width: 4rem;
+  }
+
+  &__box-3 {
+    background-color: $primary-color;
+    height: 4rem;
+    width: 4rem;
+  }
+
+  &__boxes-col-2 {
+    width: 50%;
+  }
+}

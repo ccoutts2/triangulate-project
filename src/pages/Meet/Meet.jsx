@@ -89,9 +89,11 @@ const Meet = () => {
           baseURL={baseURL}
         />
         <PubInfo selectedPub={selectedPub} />
-        <PubLocation friends={friends} />
-        <section>
-          <p>Want to add more pubs to the list?</p>
+        <PubLocation pubs={pubs} friends={friends} />
+        <section className="meet-page__add-pub-section">
+          <p className="meet-page__add-pub-text">
+            Want to add more pubs to the list?
+          </p>
           <Button className="button" label="Click here" onClick={onClick} />
         </section>
       </div>

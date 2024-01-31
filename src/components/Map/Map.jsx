@@ -1,5 +1,4 @@
 import "./map.scss";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useRef, useEffect, useState, useMemo } from "react";
 import mapboxgl from "!mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
@@ -21,6 +20,8 @@ const Map = ({ setSelectedPub, setPubs, baseURL }) => {
   const [lat, setLat] = useState(51.54);
   const [zoom, setZoom] = useState(10.8);
 
+  // Render the map
+
   useEffect(() => {
     if (map.current) return;
     map.current = new mapboxgl.Map({
@@ -29,6 +30,8 @@ const Map = ({ setSelectedPub, setPubs, baseURL }) => {
       center: [lng, lat],
       zoom: zoom,
     });
+
+    // Render the custom map style and make interactive
 
     map.current.on("click", (event) => {
       const features = map.current.queryRenderedFeatures(event.point, {
@@ -87,6 +90,8 @@ const Map = ({ setSelectedPub, setPubs, baseURL }) => {
         });
       });
 
+      // Add interactivity to GeoJSON data
+
       map.current.on("click", (event) => {
         const features = map.current.queryRenderedFeatures(event.point, {
           layers: ["locations"],
@@ -102,12 +107,16 @@ const Map = ({ setSelectedPub, setPubs, baseURL }) => {
     }
   }, [jsonData]);
 
+  // Add map fly to function
+
   function flyToStore(currentFeature) {
     map.current.flyTo({
       center: currentFeature.geometry.coordinates,
       zoom: 14,
     });
   }
+
+  // Build out list feature for map
 
   const buildLocationList = (jsonData) => {
     if (!jsonData) {
@@ -131,6 +140,8 @@ const Map = ({ setSelectedPub, setPubs, baseURL }) => {
       </div>
     );
   };
+
+  // Add friends data to map
 
   useMemo(() => {
     const baseURL = process.env.REACT_APP_FRIENDS_API_URL;
