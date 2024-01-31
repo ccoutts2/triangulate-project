@@ -12,9 +12,6 @@ const Hero = () => {
           2000, // Waits 2s
           "Find the best pubs... and enjoy with friends",
           2000, // Types 'Three' without deleting 'Two'
-          () => {
-            console.log("Sequence completed");
-          },
         ]}
         wrapper="span"
         cursor={true}

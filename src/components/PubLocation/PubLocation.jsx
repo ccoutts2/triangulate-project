@@ -42,37 +42,33 @@ const PubLocation = ({ pubs, friends }) => {
     });
   }, []);
 
-  // const [pubDistance, setPubDistance] = useState(null);
-
-  // useEffect(() => {
-  //   navigator.geolocation.getCurrentPosition(
-  //     (position) => {
-  //       console.log(position);
-  //       const userCoords = {
-  //         latitude: position.coords.latitude,
-  //         longitude: position.coords.longitude,
-  //       };
-  //       console.log(
-  //         "You are ",
-  //         geolib.getDistance(
-  //           userCoords,
-  //           pubs.features.map((pub) => {
-  //             console.log(pub.geometry.coordinates[1]);
-  //             console.log(pub.geometry.coordinates[0]);
-  //             return {
-  //               latitude: pub.geometry.coordinates[1],
-  //               longitude: pub.geometry.coordinates[0],
-  //             };
-  //           })
-  //         ),
-  //         "meters away from address"
-  //       );
-  //     },
-  //     () => {
-  //       alert("Position could not be determined.");
-  //     }
-  //   );
-  // }, []);
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        console.log(position);
+        const userCoords = {
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+        };
+        console.log(
+          "You are ",
+          geolib.getDistance(
+            userCoords,
+            pubs.features.map((pub) => {
+              return {
+                latitude: pub.geometry.coordinates[1],
+                longitude: pub.geometry.coordinates[0],
+              };
+            })
+          ),
+          "meters away from address"
+        );
+      },
+      () => {
+        alert("Position could not be determined.");
+      }
+    );
+  }, []);
 
   // Idea is to then sort the list by distance so you can see the closest pubs to go to - pub crawl generation
 
