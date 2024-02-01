@@ -1,0 +1,25 @@
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.about-page {
+  padding: 0 1rem 1rem;
+  @include flex(column, center, stretch);
+  height: 80vh;
+
+  &__header {
+    padding: 1rem 0;
+  }
+
+  &__box-section {
+    padding-top: 2rem;
+    @include flex(row, space-around, stretch);
+    width: 100%;
+  }
+
+  &__red-box {
+    background-color: $primary-color;
+    height: 4rem;
+    width: 4rem;
+  }
+}
