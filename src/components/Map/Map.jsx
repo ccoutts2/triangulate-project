@@ -148,7 +148,6 @@ const Map = ({ setSelectedPub, setPubs, baseURL }) => {
       jsonData.features.forEach((feature) => {
         navigator.geolocation.getCurrentPosition(
           (position) => {
-            console.log(position);
             let distance =
               "You are " +
               geolib.getDistance(
@@ -179,7 +178,6 @@ const Map = ({ setSelectedPub, setPubs, baseURL }) => {
     if (!features) {
       return null;
     }
-    console.log("here", features);
     return (
       <div className="map__listings">
         {features.map((feature) => (

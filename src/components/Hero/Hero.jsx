@@ -6,12 +6,12 @@ const Hero = () => {
     <div className="hero">
       <TypeAnimation
         sequence={[
-          "Meet your friends", // Types 'One'
-          1000, // Waits 1s
-          "Find the best pubs...", // Deletes 'One' and types 'Two'
-          2000, // Waits 2s
-          "Find the best pubs... and enjoy with friends",
-          2000, // Types 'Three' without deleting 'Two'
+          "Meet your friends",
+          1000,
+          "Find the best pubs",
+          1000,
+          "Enjoy with friends",
+          2000,
         ]}
         wrapper="span"
         cursor={true}

@@ -21,7 +21,7 @@ function Login() {
 
       sessionStorage.setItem("token", response.data.token);
 
-      navigate("/profile");
+      navigate("/meet");
     } catch (error) {
       setError(error.response.data);
     }
