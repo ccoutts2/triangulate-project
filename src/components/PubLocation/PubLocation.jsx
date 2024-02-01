@@ -5,7 +5,7 @@ import axios from "axios";
 import mapboxgl from "!mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
 import Button from "../Button/Button";
 
-const PubLocation = ({ pubs, friends }) => {
+const PubLocation = ({ friends }) => {
   const [center, setCenter] = useState({ latitude: 0, longitude: 0 });
   const [address, setAddress] = useState(null);
 
@@ -42,41 +42,14 @@ const PubLocation = ({ pubs, friends }) => {
     });
   }, []);
 
-  // useEffect(() => {
-  //   navigator.geolocation.getCurrentPosition(
-  //     (position) => {
-  //       console.log(position);
-  //       const userCoords = {
-  //         latitude: position.coords.latitude,
-  //         longitude: position.coords.longitude,
-  //       };
-  //       console.log(
-  //         "You are ",
-  //         geolib.getDistance(
-  //           userCoords,
-  //           pubs.features.map((pub) => {
-  //             console.log(pubs.features);
-  //             return {
-  //               latitude: pub.geometry.coordinates[1],
-  //               longitude: pub.geometry.coordinates[0],
-  //             };
-  //           })
-  //         ),
-  //         "meters away from address"
-  //       );
-  //     },
-  //     () => {
-  //       alert("Position could not be determined.");
-  //     }
-  //   );
-  // }, []);
-
-  // Idea is to then sort the list by distance so you can see the closest pubs to go to - pub crawl generation
-
   //   Add onClick to button
 
   const [showResults, setShowResults] = useState(false);
   const onClick = () => setShowResults(true);
+
+  if (!friends) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <section className="pub-distance">

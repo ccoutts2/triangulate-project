@@ -16,6 +16,7 @@
 }
 
 .friends-wrapper {
+  padding-top: 2rem;
   @include flex(row, flex-start, center);
 }
 

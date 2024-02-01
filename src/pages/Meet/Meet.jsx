@@ -77,10 +77,6 @@ const Meet = () => {
 
   return (
     <main className="meet-page">
-      <div className="friends-wrapper">
-        <Friends friends={friends} handleFriendClick={handleFriendClick} />
-        <SelectedFriend selectedFriend={selectedFriend} />
-      </div>
       <div className="map-wrapper">
         <Map
           handlePubClick={handlePubClick}
@@ -89,6 +85,10 @@ const Meet = () => {
           baseURL={baseURL}
         />
         <PubInfo selectedPub={selectedPub} />
+        <div className="friends-wrapper">
+          <Friends friends={friends} handleFriendClick={handleFriendClick} />
+          <SelectedFriend selectedFriend={selectedFriend} />
+        </div>
         <PubLocation pubs={pubs} friends={friends} />
         <section className="meet-page__add-pub-section">
           <p className="meet-page__add-pub-text">
