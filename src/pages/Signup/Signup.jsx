@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Input from "../../components/Input/Input";
+import Button from "../../components/Button/Button";
 
 const Signup = () => {
   const [error, setError] = useState("");
@@ -28,18 +29,45 @@ const Signup = () => {
 
   return (
     <main className="signup-page">
-      <form className="signup" onSubmit={handleSubmit}>
-        <h1 className="signup__title">Sign up</h1>
-        <Input type="text" name="user_name" label="User name" />
-        <Input type="text" name="address" label="Address" />
-        <Input type="text" name="email" label="Email" />
-        <Input type="password" name="password" label="Password" />
-        <button className="signup__button">Sign up</button>
+      <section className="signup-page__welcome">
+        <h1 className="login-page__header">Sign Up to Triangulate</h1>
+      </section>
+      <form className="signup-page__form" onSubmit={handleSubmit}>
+        <Input
+          className="signup-page__input"
+          type="text"
+          name="user_name"
+          label="User Name"
+        />
+        <Input
+          className="signup-page__input"
+          type="text"
+          name="address"
+          label="Address"
+        />
+        <Input
+          className="signup-page__input"
+          type="text"
+          name="email"
+          label="Email"
+        />
+        <Input
+          className="signup-page__input"
+          type="password"
+          name="password"
+          label="Password"
+        />
+        <Button className="signup-page__button" label="Sign Up" />
         <p>{error}</p>
       </form>
-      <p>
-        Have an account? <Link to="/login">Log in</Link>
-      </p>
+      <section className="signup-page__foot-note">
+        <p>
+          Don't have an account?{" "}
+          <Link className="signup-page__link" to="/login">
+            Log in
+          </Link>
+        </p>
+      </section>
     </main>
   );
 };
