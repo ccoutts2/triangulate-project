@@ -9,6 +9,7 @@ import Meet from "./pages/Meet/Meet";
 import Login from "./pages/Login/Login";
 import Footer from "./components/Footer/Footer";
 import AddNewPub from "./pages/AddNewPub/AddNewPub";
+import Signup from "./pages/Signup/Signup";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/pub/:pubId" element={<Meet />} />
           <Route path="/add-pub" element={<AddNewPub />} />
+          <Route path="/signup" element={<Signup />} />
         </Routes>
         <Footer />
       </BrowserRouter>

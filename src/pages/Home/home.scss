@@ -47,4 +47,14 @@
   &__boxes-col-2 {
     width: 50%;
   }
+
+  &__button-container {
+    padding-top: 3rem;
+    @include flex(row, space-between, stretch);
+    gap: 4rem;
+  }
+
+  &__button {
+    width: 40%;
+  }
 }

@@ -6,6 +6,7 @@ import "https://api.tiles.mapbox.com/mapbox-gl-js/v3.1.0/mapbox-gl.js";
 import "mapbox-gl/dist/mapbox-gl.css";
 import marker from "../../assets/icons/marker-editor.svg";
 import { clearStorage } from "mapbox-gl";
+import * as geolib from "geolib";
 
 const Map = ({ setSelectedPub, setPubs, baseURL }) => {
   //   // Setting Map State
@@ -116,15 +117,72 @@ const Map = ({ setSelectedPub, setPubs, baseURL }) => {
     });
   }
 
-  // Build out list feature for map
+  // const calculateDistance = (feature) => {
+  //   let userCoords = null;
 
-  const buildLocationList = (jsonData) => {
-    if (!jsonData) {
+  // const position await navigator.geolocation.getCurrentPosition()
+
+  //     navigator.geolocation.getCurrentPosition((position) => {
+  //       console.log("position", position);
+  //       let userCoords = {
+  //         latitude: position.coords.latitude,
+  //         longitude: position.coords.longitude,
+  //       };
+  //       console.log("userCoords", userCoords);
+
+  //       const distance = geolib.getDistance(userCoords, {
+  //         latitude: feature.geometry.coordinates[1],
+  //         longitude: feature.geometry.coordinates[0],
+  //       });
+
+  //       console.log(distance);
+
+  //       return `You are ${distance} meters away from address`;
+  //     });
+  //   };
+
+  const [mappedFeatures, setMappedFeatures] = useState([]);
+
+  useEffect(() => {
+    if (jsonData) {
+      jsonData.features.forEach((feature) => {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            console.log(position);
+            let distance =
+              "You are " +
+              geolib.getDistance(
+                {
+                  latitude: position.coords.latitude,
+                  longitude: position.coords.longitude,
+                },
+                {
+                  latitude: feature.geometry.coordinates[1],
+                  longitude: feature.geometry.coordinates[0],
+                }
+              ) +
+              "meters away from 51.525, 7.4575";
+
+            feature.distance = distance;
+            setMappedFeatures((prevFeatures) => [...prevFeatures, feature]);
+          },
+          () => {
+            alert("Position could not be determined.");
+          }
+        );
+      });
+    }
+  }, [jsonData]);
+
+  // Build out list feature for map
+  const buildLocationList = (features) => {
+    if (!features) {
       return null;
     }
+    console.log("here", features);
     return (
       <div className="map__listings">
-        {jsonData.features.map((feature) => (
+        {features.map((feature) => (
           <div key={feature.properties.id} className="map__item">
             <a
               onClick={() => {
@@ -135,6 +193,7 @@ const Map = ({ setSelectedPub, setPubs, baseURL }) => {
               {feature.properties.pub}
             </a>
             <div className="map__details">{feature.properties.address}</div>
+            <div>{feature.distance}</div>
           </div>
         ))}
       </div>
@@ -171,9 +230,11 @@ const Map = ({ setSelectedPub, setPubs, baseURL }) => {
     fetchData();
   }, []);
 
+  let listings = null;
   // Find Address Function
-
-  const listings = buildLocationList(jsonData);
+  if (mappedFeatures.length > 0) {
+    listings = buildLocationList(mappedFeatures);
+  }
 
   return (
     <section className="map">
