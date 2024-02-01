@@ -1,0 +1,26 @@
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+
+.login-page {
+  height: 100vh;
+  @include flex(column, center, center);
+
+  &__welcome {
+    height: 10%;
+  }
+
+  &__form {
+    height: 60%;
+  }
+
+  &__foot-note {
+    height: 10%;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $sign-up-color;
+  }
+}

@@ -3,6 +3,7 @@ import Input from "../../components/Input/Input";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
+import Button from "../../components/Button/Button";
 
 function Login() {
   const navigate = useNavigate();
@@ -28,16 +29,33 @@ function Login() {
   };
   return (
     <main className="login-page">
-      <form className="login" onSubmit={handleSubmit}>
-        <h1 className="login__title">Log in</h1>
-        <Input type="text" name="user_name" label="User name" />
-        <Input type="password" name="password" label="Password" />
-        <button className="login__button">Log in</button>
-        {error && <div className="login__message">{error}</div>}
+      <section className="login-page__welcome">
+        <h1 className="login-page__header">Welcome to Triangulate</h1>
+      </section>
+      <form className="login-page__form" onSubmit={handleSubmit}>
+        <Input
+          className="login-page__input"
+          type="text"
+          name="user_name"
+          label="Enter your user name"
+        />
+        <Input
+          className="login-page__input"
+          type="password"
+          name="password"
+          label="Enter your password"
+        />
+        <Button className="login-page__button" label="Login" />
+        {error && <div className="login-page__message">{error}</div>}
       </form>
-      <p>
-        Need an account? <Link to="/signup">Sign up</Link>
-      </p>
+      <section className="login-page__foot-note">
+        <p>
+          Don't have an account?{" "}
+          <Link className="login-page__link" to="/signup">
+            Sign up
+          </Link>
+        </p>
+      </section>
     </main>
   );
 }

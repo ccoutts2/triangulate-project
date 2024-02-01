@@ -73,7 +73,7 @@ const AddNewPub = () => {
     };
 
     if (isFormValid()) {
-      await axios.post("http://localhost:8000" + "/pubs", newPub);
+      await axios.post("http://192.168.0.16:8000" + "/pubs", newPub);
       setFormSubmitted(true);
       setTimeout(() => {
         setFormSubmitted(false);

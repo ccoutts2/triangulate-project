@@ -8,8 +8,12 @@ import friendsIcon from "../../assets/icons/friends-icon.svg";
 
 const Home = () => {
   const navigate = useNavigate();
-  const onClick = () => {
+  const onClickSignUp = () => {
     navigate("/signup");
+  };
+
+  const onClickLogin = () => {
+    navigate("/login");
   };
 
   return (
@@ -32,13 +36,17 @@ const Home = () => {
       </section>
       <section className="home-page__bio-section">
         <div className="home-page__bio">
-          Want to see meet your friends at the pub but don't know where to meet? Let
-          Triangulate give you a helping hand.
+          Want to meet all your friends at the pub but don't know where to go? Let
+          Triangulate give you a helping hand
         </div>
       </section>
       <div className="home-page__button-container">
-        <Button className="home-page__button" label="Login" />
-        <Button className="home-page__button" label="Sign Up" onClick={onClick} />
+        <Button className="home-page__button" label="Login" onClick={onClickLogin} />
+        <Button
+          className="home-page__button"
+          label="Sign Up"
+          onClick={onClickSignUp}
+        />
       </div>
     </main>
   );
