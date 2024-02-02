@@ -3,7 +3,6 @@
 @use "../../styles/partials/breakpoints" as *;
 
 .friends {
-  padding-top: 1rem;
   @include mobile-font;
   @include flex(row, flex-start, center);
   width: 40%;
@@ -12,14 +11,14 @@
     list-style-type: none;
     height: 20vh;
     border-radius: 4px;
-    overflow: scroll;
-    scrollbar-color: red;
-    scrollbar-width: thin;
+    overflow-y: scroll;
+    overflow-x: hidden;
     padding-left: 1rem;
   }
   &__item {
     @include flex(row, flex-start, center);
     padding-bottom: 0.5rem;
+    padding-right: 0.5rem;
   }
   &__icon {
     height: 1rem;
