@@ -32,17 +32,20 @@ const SelectedFriend = ({ selectedFriend }) => {
     return null;
   }
 
-  // const cutAddress = address.indexOf(", London");
+  let shortAddress = "";
 
-  // const shortAddress = address.substring(0, cutAddress);
+  if (address) {
+    const cutAddress = address.indexOf(", London");
+
+    shortAddress = address.substring(0, cutAddress);
+  }
 
   return (
     <div className="container">
       <article className="friend-card">
         <div className="friend-card__profile"></div>
         <h2 className="friend-title">{selectedFriend.name}</h2>
-        <p className="friend-card__text">{address}</p>
-        {/* <p className="friend-card__text">{homeAddress.longitude}</p> */}
+        <p className="friend-card__text">{shortAddress}</p>
         <p className="friend-card__text">{selectedFriend.favouriteDrink}</p>
       </article>
     </div>
