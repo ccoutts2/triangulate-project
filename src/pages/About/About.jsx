@@ -2,12 +2,18 @@ import "./about.scss";
 import drinkIcon from "../../assets/icons/drink_light.svg";
 import navigateIcon from "../../assets/icons/navigate-icon.svg";
 import friendsIcon from "../../assets/icons/friends-icon.svg";
+import { Link } from "react-router-dom";
+import { IoArrowBackCircleOutline } from "react-icons/io5";
 
 const About = () => {
   return (
     <main className="about-page">
       <section className="about-page__text-section">
         <div className="about-page__container">
+          <Link to="/" className="add-pub__icon">
+            <IoArrowBackCircleOutline />
+          </Link>
+          <h1 className="about-page__header about-page__header--h1">Back to home</h1>
           <h2 className="about-page__header">Problem</h2>
           <p className="about-page__text">
             In a large city it can sometimes be a difficult decision to find the best

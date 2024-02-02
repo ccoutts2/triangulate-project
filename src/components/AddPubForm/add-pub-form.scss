@@ -18,6 +18,10 @@
     font-weight: 400;
   }
 
+  &__icon {
+    color: $primary-color;
+  }
+
   &__form {
     @include flex(column, flex-start, stretch);
     padding: 1rem 0 1rem;

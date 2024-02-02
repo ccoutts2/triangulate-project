@@ -1,9 +1,16 @@
+import { Link } from "react-router-dom";
 import "./add-pub-form.scss";
+import { IoArrowBackCircleOutline } from "react-icons/io5";
 
 const AddPubForm = ({ onChange }) => {
   return (
     <section className="add-pub">
-      <h2 className="add-pub__header">Add a Pub</h2>
+      <h2 className="add-pub__header">
+        <Link to="/meet" className="add-pub__icon">
+          <IoArrowBackCircleOutline />
+        </Link>{" "}
+        Add Pub
+      </h2>
       <div className="add-pub__form">
         <label htmlFor="pub" className="add-pub__label">
           Pub:
