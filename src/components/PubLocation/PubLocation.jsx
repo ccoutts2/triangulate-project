@@ -2,7 +2,6 @@ import "./pub-location.scss";
 import * as geolib from "geolib";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import mapboxgl from "!mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
 import Button from "../Button/Button";
 
 const PubLocation = ({ friends }) => {

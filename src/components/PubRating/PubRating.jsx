@@ -1,9 +1,6 @@
 import "./pub-rating.scss";
-import { useState } from "react";
 
 const PubRating = ({ onChange, formFields }) => {
-  const [totalRating, setTotalRating] = useState(0);
-
   const renderRatingInputs = (questionNumber) => {
     const labels = ["0", "2", "4", "6", "8", "10"];
 

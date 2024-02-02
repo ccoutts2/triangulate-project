@@ -1,7 +1,7 @@
 import "./add-new-pub.scss";
 import { useState } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import PubRating from "../../components/PubRating/PubRating";
 import AddPubForm from "../../components/AddPubForm/AddPubForm";
 import Button from "../../components/Button/Button";
@@ -73,7 +73,7 @@ const AddNewPub = () => {
     };
 
     if (isFormValid()) {
-      await axios.post("http://192.168.0.16:8000" + "/pubs", newPub);
+      await axios.post(process.env.REACT_APP_FRIENDS_API_URL + "/pubs", newPub);
       setFormSubmitted(true);
       setTimeout(() => {
         setFormSubmitted(false);

@@ -31,13 +31,13 @@ const About = () => {
       </section>
       <section className="about-page__box-section">
         <div className="about-page__red-box">
-          <img className="home-page__icon" src={navigateIcon} />
+          <img className="home-page__icon" alt="red box" src={navigateIcon} />
         </div>
         <div className="about-page__red-box">
-          <img className="home-page__icon" src={friendsIcon} />
+          <img className="home-page__icon" alt="red box" src={friendsIcon} />
         </div>
         <div className="about-page__red-box">
-          <img className="home-page__icon" src={drinkIcon} />
+          <img className="home-page__icon" alt="red box" src={drinkIcon} />
         </div>
       </section>
     </main>

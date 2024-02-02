@@ -24,11 +24,6 @@ const AddPubForm = ({ onChange }) => {
           id="address"
           placeholder="Add the address of the pub"
           className="add-pub__input add-pub__input--input"></input>
-        {/* <p className="upload__side-text">
-          {formFields.description.length > 0
-            ? `${formFields.description.length} / 300`
-            : ""}
-        </p> */}
       </div>
     </section>
   );

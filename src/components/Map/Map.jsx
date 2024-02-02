@@ -4,7 +4,6 @@ import { useRef, useEffect, useState, useMemo } from "react";
 import mapboxgl from "!mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
 import "https://api.tiles.mapbox.com/mapbox-gl-js/v3.1.0/mapbox-gl.js";
 import "mapbox-gl/dist/mapbox-gl.css";
-import marker from "../../assets/icons/marker-editor.svg";
 import { clearStorage } from "mapbox-gl";
 import * as geolib from "geolib";
 
@@ -117,50 +116,23 @@ const Map = ({ setSelectedPub, setPubs, baseURL }) => {
     });
   }
 
-  // const calculateDistance = (feature) => {
-  //   let userCoords = null;
-
-  // const position await navigator.geolocation.getCurrentPosition()
-
-  //     navigator.geolocation.getCurrentPosition((position) => {
-  //       console.log("position", position);
-  //       let userCoords = {
-  //         latitude: position.coords.latitude,
-  //         longitude: position.coords.longitude,
-  //       };
-  //       console.log("userCoords", userCoords);
-
-  //       const distance = geolib.getDistance(userCoords, {
-  //         latitude: feature.geometry.coordinates[1],
-  //         longitude: feature.geometry.coordinates[0],
-  //       });
-
-  //       console.log(distance);
-
-  //       return `You are ${distance} meters away from address`;
-  //     });
-  //   };
-
   const [mappedFeatures, setMappedFeatures] = useState([]);
 
-  useEffect(() => {
+  useMemo(() => {
     if (jsonData) {
       jsonData.features.forEach((feature) => {
         navigator.geolocation.getCurrentPosition(
           (position) => {
-            let distance =
-              "You are " +
-              geolib.getDistance(
-                {
-                  latitude: position.coords.latitude,
-                  longitude: position.coords.longitude,
-                },
-                {
-                  latitude: feature.geometry.coordinates[1],
-                  longitude: feature.geometry.coordinates[0],
-                }
-              ) +
-              "meters away from 51.525, 7.4575";
+            let distance = geolib.getDistance(
+              {
+                latitude: position.coords.latitude,
+                longitude: position.coords.longitude,
+              },
+              {
+                latitude: feature.geometry.coordinates[1],
+                longitude: feature.geometry.coordinates[0],
+              }
+            );
 
             feature.distance = distance;
             setMappedFeatures((prevFeatures) => [...prevFeatures, feature]);
@@ -173,6 +145,8 @@ const Map = ({ setSelectedPub, setPubs, baseURL }) => {
     }
   }, [jsonData]);
 
+  console.log(jsonData);
+
   // Build out list feature for map
   const buildLocationList = (features) => {
     if (!features) {
@@ -180,8 +154,8 @@ const Map = ({ setSelectedPub, setPubs, baseURL }) => {
     }
     return (
       <div className="map__listings">
-        {features.map((feature) => (
-          <div key={feature.properties.id} className="map__item">
+        {features.map((feature, index) => (
+          <div key={index} className="map__item">
             <a
               onClick={() => {
                 flyToStore(feature);
@@ -191,7 +165,10 @@ const Map = ({ setSelectedPub, setPubs, baseURL }) => {
               {feature.properties.pub}
             </a>
             <div className="map__details">{feature.properties.address}</div>
-            <div>{feature.distance}</div>
+            <div className="map__distance">
+              <span className="map__distance-value">{feature.distance}</span> meters
+              away
+            </div>
           </div>
         ))}
       </div>

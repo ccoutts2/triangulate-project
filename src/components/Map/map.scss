@@ -76,6 +76,14 @@
 
   &__details {
     font-size: 0.6rem;
-    color: black;
+    color: $sign-up-color;
+  }
+
+  &__distance {
+    @extend .map__details;
+  }
+
+  &__distance-value {
+    color: $primary-color;
   }
 }
