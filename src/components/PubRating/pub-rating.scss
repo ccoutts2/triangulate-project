@@ -11,6 +11,7 @@
 
   @include desktop {
     padding-left: 5rem;
+    @include max-content;
   }
 
   &__header {

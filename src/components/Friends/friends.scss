@@ -3,7 +3,7 @@
 @use "../../styles/partials/breakpoints" as *;
 
 .friends {
-  @include mobile-font;
+  font-size: 1rem;
   @include flex(row, flex-start, center);
   width: 40%;
 

@@ -3,7 +3,11 @@
 @use "../../styles/partials/variables" as *;
 
 .pub-form {
-  height: 125vh;
+  height: 145vh;
+
+  @include desktop {
+    @include max-content;
+  }
 
   &__button-container {
     padding: 1rem 1rem 0;

@@ -62,7 +62,7 @@ const Signup = () => {
       </form>
       <section className="signup-page__foot-note">
         <p>
-          Don't have an account?{" "}
+          Have an account?{" "}
           <Link className="signup-page__link" to="/login">
             Log in
           </Link>

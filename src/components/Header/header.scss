@@ -3,7 +3,7 @@
 @use "../../styles/partials/breakpoints" as *;
 
 .nav {
-  @include mobile-font;
+  @include mobile-nav;
   padding: 1rem;
 
   @include tablet {
@@ -13,6 +13,7 @@
   @include desktop {
     padding: 1rem 5rem;
     font-size: 1.25rem;
+    @include max-content;
   }
 
   &__list {
