@@ -5,8 +5,6 @@ import axios from "axios";
 const SelectedFriend = ({ selectedFriend }) => {
   const [address, setAddress] = useState(null);
 
-  // const { name, homeAddress, favouriteDrink } = selectedFriend;
-
   useEffect(() => {
     // Reverse Geocode to retrieve address from coordinates
 
@@ -32,6 +30,8 @@ const SelectedFriend = ({ selectedFriend }) => {
     return null;
   }
 
+  // Shorten address displayed on selected friends card
+
   let shortAddress = "";
 
   if (address) {
@@ -44,7 +44,7 @@ const SelectedFriend = ({ selectedFriend }) => {
     <div className="container">
       <article className="friend-card">
         <div className="friend-card__profile"></div>
-        <h2 className="friend-title">{selectedFriend.name}</h2>
+        <h2 className="friend-card__title">{selectedFriend.name}</h2>
         <p className="friend-card__text">{shortAddress}</p>
         <p className="friend-card__text">{selectedFriend.favouriteDrink}</p>
       </article>

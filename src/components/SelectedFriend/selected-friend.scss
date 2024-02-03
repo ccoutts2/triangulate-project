@@ -15,10 +15,9 @@
   border-radius: 12px;
   box-shadow: -2px -4px inset $primary-color;
 
-  &__title {
-    margin-top: 20px;
-    font-size: 2em;
-    font-weight: bold;
+  &__text {
+    font-size: 0.8rem;
+    text-align: center;
   }
 
   &__original-title {

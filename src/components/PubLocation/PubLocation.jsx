@@ -46,7 +46,7 @@ const PubLocation = ({ friends }) => {
   const [showResults, setShowResults] = useState(false);
   const onClick = () => setShowResults(true);
 
-  if (!friends) {
+  if (!friends && !address) {
     return <p>Loading...</p>;
   }
 

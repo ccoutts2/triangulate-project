@@ -116,6 +116,8 @@ const Map = ({ setSelectedPub, setPubs, baseURL }) => {
     });
   }
 
+  // Add distance property to existing jsonData
+
   const [mappedFeatures, setMappedFeatures] = useState([]);
 
   useMemo(() => {
@@ -148,13 +150,17 @@ const Map = ({ setSelectedPub, setPubs, baseURL }) => {
   console.log(jsonData);
 
   // Build out list feature for map
+
   const buildLocationList = (features) => {
     if (!features) {
       return null;
     }
+
+    const sortedFeatures = features.slice().sort((a, b) => a.distance - b.distance);
+
     return (
       <div className="map__listings">
-        {features.map((feature, index) => (
+        {sortedFeatures.map((feature, index) => (
           <div key={index} className="map__item">
             <a
               onClick={() => {
@@ -206,7 +212,7 @@ const Map = ({ setSelectedPub, setPubs, baseURL }) => {
   }, []);
 
   let listings = null;
-  // Find Address Function
+
   if (mappedFeatures.length > 0) {
     listings = buildLocationList(mappedFeatures);
   }

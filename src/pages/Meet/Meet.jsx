@@ -7,9 +7,9 @@ import SelectedFriend from "../../components/SelectedFriend/SelectedFriend";
 import Button from "../../components/Button/Button";
 import { useNavigate } from "react-router-dom";
 import "mapbox-gl/dist/mapbox-gl.css";
-
 import axios from "axios";
 import { useEffect, useState } from "react";
+import redMarker from "../../assets/icons/mapbox-marker-icon-red.svg";
 
 const Meet = () => {
   const navigate = useNavigate();
@@ -78,6 +78,14 @@ const Meet = () => {
   return (
     <main className="meet-page">
       <div className="map-wrapper">
+        <div className="map-wrapper__key-container">
+          <p className="map-wrapper__key">
+            Friends Marker: <img src={redMarker}></img>
+          </p>
+          <p className="map-wrapper__key">
+            Pub Marker:<div className="map-wrapper__dot"></div>
+          </p>
+        </div>
         <Map
           handlePubClick={handlePubClick}
           setSelectedPub={setSelectedPub}
