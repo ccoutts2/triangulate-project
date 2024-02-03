@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import drinkIcon from "../../assets/icons/drink_light.svg";
 import navigateIcon from "../../assets/icons/navigate-icon.svg";
 import friendsIcon from "../../assets/icons/friends-icon.svg";
+import hero from "../../assets/images/hero.svg";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -19,6 +20,9 @@ const Home = () => {
   return (
     <main className="home-page">
       <Hero />
+      <section className="home-page__hero">
+        <img src={hero} alt="arty picture of people sitting at a bar" />
+      </section>
       <section className="home-page__red-boxes">
         <div className="home-page__boxes-col-1">
           <div className="home-page__box-1">
@@ -26,6 +30,9 @@ const Home = () => {
           </div>
           <div className="home-page__box-2">
             <img className="home-page__icon" src={friendsIcon} />
+          </div>
+          <div className="home-page__box-tablet">
+            <img className="home-page__icon" src={drinkIcon} />
           </div>
         </div>
         <div className="home-page__boxes-col-2">
