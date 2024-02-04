@@ -2,15 +2,15 @@
 
 Triangulate
 
-# Getting Started
+## Getting Started
 
 Installation
-1. Clone the repository
-2. Run npm install in terminal
+1. Clone this repository and triangulate-api-project repository
+2. Run npm install in both terminals
 3. Obtain a Mapbox access token
-4. Create a .env file in the root directory of your project
+4. Create a .env file in the root directory of the project folder
 5. Add your Mapbox token to the .env file
-6. Run npm start
+6. Run npm start in both terminals
 
 ## Overview
 
