@@ -153,7 +153,7 @@ const Map = ({ setSelectedPub, setPubs, baseURL }) => {
       return null;
     }
 
-    const sortedFeatures = features.slice().sort((a, b) => a.distance - b.distance);
+    const sortedFeatures = features.sort((a, b) => a.distance - b.distance);
 
     return (
       <div className="map__listings">
