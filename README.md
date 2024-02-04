@@ -2,6 +2,16 @@
 
 Triangulate
 
+## Getting Started
+
+Installation
+1. Clone this repository and triangulate-api-project repository
+2. Run npm install in both terminals
+3. Obtain a Mapbox access token
+4. Create a .env file in the root directory of the project folder
+5. Add your Mapbox token to the .env file
+6. Run npm start in both terminals
+
 ## Overview
 
 Triangulate offers you the opportuntity to find and rate pubs located around your city, while allowing you to find places closest to you and your friends.
@@ -81,15 +91,7 @@ When looking for a pub to go to, Traingulate cuts out the time consuming process
 
 ![](meet-screen.png)
 
-#### Login Page
-
-![](login.png)
-
 ### Data
-
-#### Login Page
-
-![](sql-diagram.png)
 
 ### Endpoints
 
@@ -197,20 +199,4 @@ Response:
     "token": "hbcJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6I..."
     }
 
-### Auth
 
-See below in Nice-to-haves
-
-## Roadmap
-
-- Figma files
-- Server side function running
-- Build APIs for Friends and Pubs
-- Build out Mapbox functionality
-- Create Database and transfer Friends and Pubs data over to it
-
-## Nice-to-haves
-
-- User authentication and login
-- Calculate pub crawl based on distance between pubs
-- Weather API - for pub crawl feeature
