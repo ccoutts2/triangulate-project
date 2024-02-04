@@ -17,7 +17,6 @@ const SelectedFriend = ({ selectedFriend }) => {
           `${mapBoxURL}/${selectedFriend.homeAddress.longitude},${selectedFriend.homeAddress.latitude}.json?access_token=${mapboxAccessToken}`
         );
         setAddress(data.features[0].place_name);
-        console.log(data.features[0].place_name);
       } catch (error) {
         console.log(error);
       }
@@ -41,12 +40,14 @@ const SelectedFriend = ({ selectedFriend }) => {
   }
 
   return (
-    <div className="container">
-      <article className="friend-card">
+    <div className="friend-card">
+      <article className="friend-card__article">
         <div className="friend-card__profile"></div>
         <h2 className="friend-card__title">{selectedFriend.name}</h2>
         <p className="friend-card__text">{shortAddress}</p>
-        <p className="friend-card__text">{selectedFriend.favouriteDrink}</p>
+        <p className="friend-card__text friend-card__text--fav-drink">
+          {selectedFriend.favouriteDrink}
+        </p>
       </article>
     </div>
   );

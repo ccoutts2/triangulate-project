@@ -57,8 +57,8 @@ const PubRating = ({ onChange, formFields }) => {
 
         <p className="pub-ratings__result">
           Don't worry about counting, I'll take care of that for you{" "}
-          <p className="pub-ratings__arrow">&#8675;</p>
         </p>
+        <p className="pub-ratings__arrow">&#8675;</p>
         <p className="pub-ratings__result">
           Rating:{" "}
           {Number(formFields.rating1) +

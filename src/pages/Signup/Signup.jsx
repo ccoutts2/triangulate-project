@@ -22,7 +22,6 @@ const Signup = () => {
       });
       navigate("/login");
     } catch (error) {
-      event.target.reset();
       setError(error.response.data);
     }
   };

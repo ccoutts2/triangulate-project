@@ -41,7 +41,6 @@ const Meet = () => {
   const fetchPub = async () => {
     try {
       const { data } = await axios.get(`${baseURL}/pubs`);
-      console.log(data);
       setSelectedPub(data);
     } catch (error) {
       console.log(error);
@@ -80,10 +79,10 @@ const Meet = () => {
       <div className="map-wrapper">
         <div className="map-wrapper__key-container">
           <p className="map-wrapper__key">
-            Friends Marker: <img src={redMarker}></img>
+            Friends Marker: <img src={redMarker} alt="red marker"></img>
           </p>
           <p className="map-wrapper__key">
-            Pub Marker:<div className="map-wrapper__dot"></div>
+            Pub Marker:<span className="map-wrapper__dot"></span>
           </p>
         </div>
         <Map

@@ -3,8 +3,11 @@ import * as geolib from "geolib";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Button from "../Button/Button";
+import { TypeAnimation } from "react-type-animation";
 
 const PubLocation = ({ friends }) => {
+  // Calculate central location between friends list
+
   const [center, setCenter] = useState({ latitude: 0, longitude: 0 });
   const [address, setAddress] = useState(null);
 
@@ -56,7 +59,16 @@ const PubLocation = ({ friends }) => {
         Ever wondered where might be best to meet your friends?
       </p>
       <Button className="button" label="Triangulate" onClick={onClick} />
-      {showResults ? <p className="pub-distance__address-text">{address}</p> : null}
+      {showResults ? (
+        <p className="pub-distance__address-text">
+          <TypeAnimation
+            sequence={[address, 1000]}
+            wrapper="span"
+            cursor={true}
+            style={{ fontSize: "0.8rem", display: "inline-block" }}
+          />
+        </p>
+      ) : null}
     </section>
   );
 };

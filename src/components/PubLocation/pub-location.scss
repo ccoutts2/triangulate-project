@@ -1,3 +1,8 @@
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/resets" as *;
+@use "../../styles/partials/mixins" as *;
+
 .pub-distance {
   padding-top: 1rem;
   &__text {
@@ -6,5 +11,9 @@
 
   &__address-text {
     padding-top: 0.5rem;
+  }
+
+  @include tablet {
+    padding-top: 2rem;
   }
 }

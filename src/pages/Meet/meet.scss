@@ -7,7 +7,7 @@
   height: 175vh;
 
   &__add-pub-section {
-    padding: 1rem 0;
+    padding: 2rem 0;
   }
 
   &__add-pub-text {
@@ -24,6 +24,14 @@
   height: 50vh;
   padding: 1rem;
 
+  @include tablet {
+    padding-inline: 2.25rem;
+  }
+
+  @include desktop {
+    padding-inline: 5rem;
+  }
+
   &__key-container {
     @include flex(column, center, flex-end);
     padding-bottom: 1rem;
@@ -31,7 +39,6 @@
 
   &__key {
     @include flex(row, center, center);
-    // padding-right: 0.5rem;
   }
 
   &__dot {

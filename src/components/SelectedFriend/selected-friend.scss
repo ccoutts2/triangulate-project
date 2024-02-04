@@ -2,35 +2,28 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/breakpoints" as *;
 
-.container {
-  @include flex(row, center, center);
-  width: 60%;
-  height: 7rem;
-}
 .friend-card {
-  width: 50%;
-  height: 100%;
-  @include flex(column, center, center);
-  border: 1px solid $primary-color;
-  border-radius: 12px;
-  box-shadow: -2px -4px inset $primary-color;
+  @include flex(row, center, center);
+  width: 65%;
+  height: 7rem;
+
+  &__article {
+    width: 80%;
+    height: 100%;
+    padding: 0.25rem;
+    @include flex(column, space-between, center);
+    border: 1px solid $primary-color;
+    border-radius: 12px;
+    box-shadow: -2px -4px inset $primary-color;
+  }
 
   &__text {
     font-size: 0.8rem;
     text-align: center;
-  }
+    padding-top: 0.5rem;
 
-  &__original-title {
-    width: 100%;
-    font-size: 1.2em;
-    color: #666;
-    text-align: center;
-  }
-
-  &__description {
-    margin-top: 20px;
-    font-size: 1em;
-    color: #333;
-    text-align: justify;
+    &--fav-drink {
+      font-weight: 600;
+    }
   }
 }

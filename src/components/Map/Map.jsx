@@ -4,7 +4,6 @@ import { useRef, useEffect, useState, useMemo } from "react";
 import mapboxgl from "!mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
 import "https://api.tiles.mapbox.com/mapbox-gl-js/v3.1.0/mapbox-gl.js";
 import "mapbox-gl/dist/mapbox-gl.css";
-import { clearStorage } from "mapbox-gl";
 import * as geolib from "geolib";
 
 const Map = ({ setSelectedPub, setPubs, baseURL }) => {
@@ -146,8 +145,6 @@ const Map = ({ setSelectedPub, setPubs, baseURL }) => {
       });
     }
   }, [jsonData]);
-
-  console.log(jsonData);
 
   // Build out list feature for map
 

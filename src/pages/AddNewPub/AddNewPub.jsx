@@ -18,8 +18,6 @@ const AddNewPub = () => {
     address: "",
   });
 
-  console.log(formFields);
-
   const [formSubmitted, setFormSubmitted] = useState(false);
 
   const onChange = (event) => {
