@@ -1,13 +1,16 @@
 import "./add-new-pub.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import PubRating from "../../components/PubRating/PubRating";
 import AddPubForm from "../../components/AddPubForm/AddPubForm";
 import Button from "../../components/Button/Button";
 
 const AddNewPub = () => {
   const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+  const [failedAuth, setFailedAuth] = useState(false);
+  const [formSubmitted, setFormSubmitted] = useState(false);
   const [formFields, setFormFields] = useState({
     rating1: 0,
     rating2: 0,
@@ -18,7 +21,52 @@ const AddNewPub = () => {
     address: "",
   });
 
-  const [formSubmitted, setFormSubmitted] = useState(false);
+  useEffect(() => {
+    const baseURL = process.env.REACT_APP_FRIENDS_API_URL;
+    const loadData = async () => {
+      const token = sessionStorage.getItem("token");
+
+      if (!token) {
+        return setFailedAuth(true);
+      }
+
+      try {
+        const { data } = await axios.get(`${baseURL}/api/users/add-pub`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        console.log(data);
+        setUser(data);
+      } catch (error) {
+        console.log(error);
+        setFailedAuth(true);
+      }
+    };
+    loadData();
+  }, []);
+
+  const handleLogout = () => {
+    sessionStorage.removeItem("token");
+    setUser(null);
+    setFailedAuth(true);
+  };
+
+  if (failedAuth) {
+    return (
+      <main className="pub-form__login">
+        <p className="pub-form__login-text">
+          You must be logged in to see this page
+        </p>
+        <p className="pub-form__login-text">
+          {" "}
+          <Link className="pub-form__link" to="/login">
+            Log in
+          </Link>
+        </p>
+      </main>
+    );
+  }
 
   const onChange = (event) => {
     setFormFields({ ...formFields, [event.target.name]: event.target.value });
@@ -79,6 +127,14 @@ const AddNewPub = () => {
       }, 2500);
     }
   };
+
+  if (!user) {
+    return (
+      <main>
+        <p>Loading...</p>
+      </main>
+    );
+  }
 
   return (
     <>

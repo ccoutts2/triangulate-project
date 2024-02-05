@@ -9,6 +9,16 @@
     @include max-content;
   }
 
+  &__login {
+    padding-inline: 1rem;
+    @include flex(column, center, center);
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $sign-up-color;
+  }
+
   &__button-container {
     padding: 1rem 1rem 0;
 

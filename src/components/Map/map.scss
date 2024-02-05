@@ -46,11 +46,12 @@
     height: 5rem;
 
     @include tablet {
-      @include flex(column, center, flex-start);
+      display: flex;
+      flex-direction: column;
       height: auto;
       z-index: 4;
       overflow-y: scroll;
-      padding-bottom: 3.7rem;
+      overflow-x: hidden;
       width: 20%;
     }
   }

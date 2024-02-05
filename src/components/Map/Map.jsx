@@ -42,16 +42,13 @@ const Map = ({ setSelectedPub, setPubs, baseURL }) => {
       }
       const feature = features[0];
 
-      setSelectedPub(feature.properties);
-    });
-  }, []);
+      map.current.on("move", () => {
+        setLng(map.current.getCenter().lng.toFixed(4));
+        setLat(map.current.getCenter().lat.toFixed(4));
+        setZoom(map.current.getZoom().toFixed(2));
+      });
 
-  useEffect(() => {
-    if (!map.current) return;
-    map.current.on("move", () => {
-      setLng(map.current.getCenter().lng.toFixed(4));
-      setLat(map.current.getCenter().lat.toFixed(4));
-      setZoom(map.current.getZoom().toFixed(2));
+      setSelectedPub(feature.properties);
     });
   }, []);
 
@@ -119,7 +116,7 @@ const Map = ({ setSelectedPub, setPubs, baseURL }) => {
 
   const [mappedFeatures, setMappedFeatures] = useState([]);
 
-  useMemo(() => {
+  useEffect(() => {
     if (jsonData) {
       jsonData.features.forEach((feature) => {
         navigator.geolocation.getCurrentPosition(

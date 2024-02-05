@@ -12,6 +12,7 @@ const PubLocation = ({ friends }) => {
   const [address, setAddress] = useState(null);
 
   useEffect(() => {
+    if (!friends) return;
     navigator.geolocation.getCurrentPosition(() => {
       const coordinates = geolib.getCenter(
         friends.map((friend) => {

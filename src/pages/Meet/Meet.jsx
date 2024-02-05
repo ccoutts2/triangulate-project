@@ -64,7 +64,7 @@ const Meet = () => {
     fetchPubs();
   }, []);
 
-  if (!selectedPub) return <p>Loading..</p>;
+  if (!selectedPub && !friends) return <p>Loading..</p>;
 
   const handlePubClick = (pub) => {
     setSelectedPub(pub);
