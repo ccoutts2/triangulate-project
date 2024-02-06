@@ -17,8 +17,8 @@ const PubLocation = ({ friends }) => {
       const coordinates = geolib.getCenter(
         friends.map((friend) => {
           return {
-            latitude: friend.homeAddress.latitude,
-            longitude: friend.homeAddress.longitude,
+            latitude: friend.latitude,
+            longitude: friend.longitude,
           };
         })
       );

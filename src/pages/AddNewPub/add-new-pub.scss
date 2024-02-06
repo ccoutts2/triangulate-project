@@ -3,7 +3,7 @@
 @use "../../styles/partials/variables" as *;
 
 .pub-form {
-  height: 145vh;
+  height: 150vh;
   z-index: 2;
 
   @include desktop {
@@ -16,39 +16,42 @@
     border-radius: 50%;
     height: 2rem;
     width: 2rem;
-    position: fixed;
+    position: absolute;
     right: 1rem;
-    font-size: 0;
+    padding: 0;
 
     &:hover {
       @include button;
       width: 20%;
       transition: 0.5s ease-in-out;
-    }
-
-    &__login {
-      padding-inline: 1rem;
-      @include flex(column, center, center);
-    }
-
-    &__link {
-      text-decoration: none;
-      color: $sign-up-color;
-    }
-
-    &__button-container {
-      padding: 2rem 1rem 0;
-
-      @include tablet {
-        padding-inline: 2.25rem;
-      }
-
-      @include desktop {
-        padding-inline: 5rem;
+      &::after {
+        content: "Sign out";
       }
     }
-    &__button {
-      @include button;
+  }
+
+  &__login {
+    padding-inline: 1rem;
+    @include flex(column, center, center);
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $sign-up-color;
+  }
+
+  &__button-container {
+    padding: 2rem 1rem 0;
+
+    @include tablet {
+      padding-inline: 2.25rem;
     }
+
+    @include desktop {
+      padding-inline: 5rem;
+    }
+  }
+  &__button {
+    @include button;
   }
 }

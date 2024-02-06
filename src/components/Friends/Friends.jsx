@@ -14,7 +14,7 @@ const Friends = ({ friends, handleFriendClick }) => {
                   handleFriendClick(friend);
                 }}>
                 <div className="friends__icon"></div>
-                <h3 className="friends__title">{friend.name}</h3>
+                <h3 className="friends__title">{friend.user_name}</h3>
               </li>
             );
           })}

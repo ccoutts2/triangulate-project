@@ -18,6 +18,7 @@ const Signup = () => {
         user_name: event.target.user_name.value,
         email: event.target.email.value,
         address: event.target.address.value,
+        favourite_drink: event.target.favourite_drink.value,
         password: event.target.password.value,
       });
       navigate("/login");
@@ -49,6 +50,12 @@ const Signup = () => {
           type="text"
           name="email"
           label="Email"
+        />
+        <Input
+          className="signup-page__input"
+          type="text"
+          name="favourite_drink"
+          label="Favourite Drink"
         />
         <Input
           className="signup-page__input"

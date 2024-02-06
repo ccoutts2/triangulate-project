@@ -14,7 +14,7 @@ const SelectedFriend = ({ selectedFriend }) => {
     const findAddress = async () => {
       try {
         const { data } = await axios.get(
-          `${mapBoxURL}/${selectedFriend.homeAddress.longitude},${selectedFriend.homeAddress.latitude}.json?access_token=${mapboxAccessToken}`
+          `${mapBoxURL}/${selectedFriend.longitude},${selectedFriend.latitude}.json?access_token=${mapboxAccessToken}`
         );
         setAddress(data.features[0].place_name);
       } catch (error) {
@@ -43,10 +43,10 @@ const SelectedFriend = ({ selectedFriend }) => {
     <div className="friend-card">
       <article className="friend-card__article">
         <div className="friend-card__profile"></div>
-        <h2 className="friend-card__title">{selectedFriend.name}</h2>
+        <h2 className="friend-card__title">{selectedFriend.user_name}</h2>
         <p className="friend-card__text">{shortAddress}</p>
         <p className="friend-card__text friend-card__text--fav-drink">
-          {selectedFriend.favouriteDrink}
+          {selectedFriend.favourite_drink}
         </p>
       </article>
     </div>

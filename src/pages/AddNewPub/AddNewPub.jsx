@@ -5,6 +5,7 @@ import { useNavigate, Link } from "react-router-dom";
 import PubRating from "../../components/PubRating/PubRating";
 import AddPubForm from "../../components/AddPubForm/AddPubForm";
 import Button from "../../components/Button/Button";
+import { CiLogout } from "react-icons/ci";
 
 const AddNewPub = () => {
   const navigate = useNavigate();
@@ -140,7 +141,7 @@ const AddNewPub = () => {
     <>
       <Button
         className="pub-form__signout-button"
-        label="Sign Out"
+        label={<CiLogout />}
         onClick={handleLogout}
       />
       <form className="pub-form" onSubmit={handleSubmit}>

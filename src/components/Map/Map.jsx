@@ -42,13 +42,16 @@ const Map = ({ setSelectedPub, setPubs, baseURL }) => {
       }
       const feature = features[0];
 
-      map.current.on("move", () => {
-        setLng(map.current.getCenter().lng.toFixed(4));
-        setLat(map.current.getCenter().lat.toFixed(4));
-        setZoom(map.current.getZoom().toFixed(2));
-      });
-
       setSelectedPub(feature.properties);
+    });
+  }, []);
+
+  useEffect(() => {
+    if (!map.current) return;
+    map.current.on("move", () => {
+      setLng(map.current.getCenter().lng.toFixed(4));
+      setLat(map.current.getCenter().lat.toFixed(4));
+      setZoom(map.current.getZoom().toFixed(2));
     });
   }, []);
 
@@ -189,12 +192,12 @@ const Map = ({ setSelectedPub, setPubs, baseURL }) => {
           const marker = new mapboxgl.Marker({
             color: "#f3180a",
           })
-            .setLngLat([friend.homeAddress.longitude, friend.homeAddress.latitude])
+            .setLngLat([friend.longitude, friend.latitude])
             .addTo(map.current);
 
           const popup = new mapboxgl.Popup({
             offset: 25,
-          }).setHTML(`<h4>${friend.name}</h4>`);
+          }).setHTML(`<h4>${friend.user_name}</h4>`);
           marker.setPopup(popup);
         });
       } catch (error) {
