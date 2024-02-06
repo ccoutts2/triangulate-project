@@ -4,6 +4,7 @@
 
 .add-pub {
   padding-inline: 1rem;
+  z-index: 10;
 
   @include tablet {
     padding-inline: 2.25rem;
