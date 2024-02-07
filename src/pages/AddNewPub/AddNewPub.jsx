@@ -139,12 +139,12 @@ const AddNewPub = () => {
 
   return (
     <>
-      <Button
-        className="pub-form__signout-button"
-        label={<CiLogout />}
-        onClick={handleLogout}
-      />
       <form className="pub-form" onSubmit={handleSubmit}>
+        <Button
+          className="pub-form__signout-button"
+          label={<CiLogout />}
+          onClick={handleLogout}
+        />
         <AddPubForm onChange={onChange} />
         <PubRating formFields={formFields} onChange={onChange} />
         <div className="pub-form__button-container">

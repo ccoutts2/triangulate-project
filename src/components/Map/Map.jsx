@@ -63,6 +63,8 @@ const Map = ({ setSelectedPub, setPubs, baseURL }) => {
     try {
       const { data } = await axios.get(`${baseURL}/pubs`);
 
+      console.log(data);
+
       setJsonData(data);
     } catch (error) {
       console.log(error);

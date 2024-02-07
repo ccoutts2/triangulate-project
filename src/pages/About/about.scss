@@ -5,7 +5,7 @@
 .about-page {
   padding: 0 1rem 1rem;
   @include flex(column, center, stretch);
-  height: 100vh;
+  height: 90vh;
 
   @include tablet {
     padding-inline: 2.25rem;

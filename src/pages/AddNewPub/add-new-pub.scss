@@ -3,7 +3,7 @@
 @use "../../styles/partials/variables" as *;
 
 .pub-form {
-  height: 150vh;
+  height: 140vh;
   z-index: 2;
 
   @include desktop {
@@ -27,6 +27,14 @@
       &::after {
         content: "Sign out";
       }
+    }
+
+    @include tablet {
+      right: 2.25rem;
+    }
+
+    @include desktop {
+      right: 5rem;
     }
   }
 
