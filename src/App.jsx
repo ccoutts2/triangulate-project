@@ -4,6 +4,7 @@ import Header from "./components/Header/Header";
 import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
 import Meet from "./pages/Meet/Meet";
+import Groups from "./pages/Groups/Groups";
 import Login from "./pages/Login/Login";
 import Footer from "./components/Footer/Footer";
 import AddNewPub from "./pages/AddNewPub/AddNewPub";
@@ -18,8 +19,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/meet" element={<Meet />} />
+          <Route path="/meet/:groupId/pubs" element={<Meet />} />
+          <Route path="/groups" element={<Groups />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/pub/:pubId" element={<Meet />} />
           <Route path="/add-pub" element={<AddNewPub />} />
           <Route path="/signup" element={<Signup />} />
         </Routes>

@@ -1,6 +1,7 @@
 import "./map.scss";
 import axios from "axios";
 import { useRef, useEffect, useState, useMemo } from "react";
+import { useParams } from "react-router-dom";
 import mapboxgl from "!mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
 import "https://api.tiles.mapbox.com/mapbox-gl-js/v3.1.0/mapbox-gl.js";
 import "mapbox-gl/dist/mapbox-gl.css";
@@ -56,14 +57,12 @@ const Map = ({ setSelectedPub, setPubs, baseURL }) => {
   }, []);
 
   // Fetch Pub Data to display on Map - passed down as props to Map component
-
+  const params = useParams();
   const [jsonData, setJsonData] = useState(null);
 
-  const fetchJson = async () => {
+  const fetchJson = async (groupId) => {
     try {
-      const { data } = await axios.get(`${baseURL}/pubs`);
-
-      console.log(data);
+      const { data } = await axios.get(`${baseURL}/meet/${groupId}/pubs`);
 
       setJsonData(data);
     } catch (error) {
@@ -72,7 +71,7 @@ const Map = ({ setSelectedPub, setPubs, baseURL }) => {
   };
 
   useEffect(() => {
-    fetchJson();
+    fetchJson(params.groupId);
   }, []);
 
   // Display Pub Data on map
