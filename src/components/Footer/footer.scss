@@ -2,9 +2,18 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/breakpoints" as *;
 
-.nav {
+.footer-nav {
   @include mobile-nav;
-  padding: 1rem;
+  width: 100%;
+  padding: 0.5rem;
+  position: fixed;
+  bottom: 0;
+  z-index: 10;
+  left: 50%; // Center horizontally
+  transform: translateX(-50%);
+  @include flex(row, center, stretch);
+  background-color: #ecf0f3;
+  border-top: 0.5px solid $primary-color;
 
   @include tablet {
     padding: 1rem 2.25rem;
@@ -18,12 +27,25 @@
 
   &__list {
     list-style: none;
-    @include flex(row, space-between, center);
+    @include flex(row, space-between, stretch);
+    gap: 2rem;
     padding: 0;
+    width: 100%;
+  }
+
+  &__item {
+    width: 100%;
+    @include tablet {
+      display: none;
+    }
   }
 
   &__link {
     text-decoration: none;
     color: $primary-color;
+  }
+
+  &__icon-container {
+    @include flex(column, center, center);
   }
 }
