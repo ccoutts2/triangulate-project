@@ -32,7 +32,7 @@ const Groups = () => {
       <section className="groups-page__product-cards">
         {groups.map((group) => {
           return (
-            <Link to={`/meet/${group.id}/pubs`}>
+            <Link to={`/meet/${group.id}/pubs`} className="groups-page__link">
               <article key={group.id} className="groups-page__product-card">
                 <img
                   className="groups-page__image"

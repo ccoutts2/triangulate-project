@@ -60,9 +60,9 @@ const Map = ({ setSelectedPub, setPubs, baseURL }) => {
   const params = useParams();
   const [jsonData, setJsonData] = useState(null);
 
-  const fetchJson = async (groupId) => {
+  const fetchJson = async () => {
     try {
-      const { data } = await axios.get(`${baseURL}/meet/${groupId}/pubs`);
+      const { data } = await axios.get(`${baseURL}/meet/pubs`);
 
       setJsonData(data);
     } catch (error) {
