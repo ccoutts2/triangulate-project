@@ -70,7 +70,13 @@ const AddNewPub = () => {
   }
 
   const onChange = (event) => {
-    setFormFields({ ...formFields, [event.target.name]: event.target.value });
+    const { name, value } = event.target;
+
+    setFormFields((prevFields) => {
+      return name === "group"
+        ? { ...prevFields, group: value }
+        : { ...prevFields, [name]: value };
+    });
   };
 
   const isNameValid = () => {
@@ -97,7 +103,8 @@ const AddNewPub = () => {
       !formFields.rating4 ||
       !formFields.rating5 ||
       !isNameValid() ||
-      !isAddressValid()
+      !isAddressValid() ||
+      !formFields.group
     ) {
       return false;
     }
@@ -109,8 +116,9 @@ const AddNewPub = () => {
     event.preventDefault();
 
     const newPub = {
-      pub: event.target.pub.value,
-      address: event.target.address.value,
+      pub: formFields.pub,
+      address: formFields.address,
+      group: formFields.group,
       rating:
         Number(formFields.rating1) +
         Number(formFields.rating2) +

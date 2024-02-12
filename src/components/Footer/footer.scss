@@ -12,7 +12,7 @@
   left: 50%; // Center horizontally
   transform: translateX(-50%);
   @include flex(row, center, stretch);
-  background-color: #ecf0f3;
+  background-color: $primary-background;
   border-top: 0.5px solid $primary-color;
 
   @include tablet {
