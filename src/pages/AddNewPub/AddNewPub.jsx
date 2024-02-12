@@ -37,7 +37,6 @@ const AddNewPub = () => {
             Authorization: `Bearer ${token}`,
           },
         });
-        console.log(data);
         setUser(data);
       } catch (error) {
         console.log(error);
@@ -129,10 +128,11 @@ const AddNewPub = () => {
 
     if (isFormValid()) {
       await axios.post(process.env.REACT_APP_FRIENDS_API_URL + "/pubs", newPub);
+
       setFormSubmitted(true);
       setTimeout(() => {
         setFormSubmitted(false);
-        navigate("/meet");
+        navigate(`/meet/${formFields.group}/pubs`);
       }, 2500);
     }
   };

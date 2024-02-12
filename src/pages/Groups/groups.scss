@@ -6,7 +6,7 @@
   padding-inline: 1rem;
 
   &__product-cards {
-    @include flex(row, center, stretch);
+    @include flex(row, space-between, stretch);
     gap: 0.25rem;
     flex-wrap: wrap;
   }
@@ -22,5 +22,69 @@
   &__title {
     font-size: 0.8rem;
     height: 100%;
+  }
+}
+
+.popup-overlay {
+  background: rgba(19, 24, 44, 0.7);
+}
+
+.trigger {
+  cursor: pointer;
+}
+
+.modal {
+  font-size: 0.75rem;
+  width: 100%;
+  padding-inline: 1rem;
+  @include flex(column, center, stretch);
+  background-color: $primary-background;
+  border-radius: 2rem;
+
+  &__header {
+    width: 100%;
+    font-size: 1.125rem;
+    text-align: center;
+    padding: 0.312rem;
+  }
+
+  &__content {
+    width: 100%;
+    padding: 0.625rem 0.31rem;
+    @include flex(column, center, center);
+  }
+
+  &__label {
+    text-align: left;
+  }
+
+  &__input {
+    border-radius: 4px;
+    background-color: $secondary-background;
+    border: 1px solid $secondary-color;
+    height: 1.25rem;
+    margin-top: 0.25rem;
+    padding: 0.25rem;
+  }
+
+  &__actions {
+    width: 100%;
+    padding: 0.625rem 0.31rem;
+    @include flex(column, space-between, stretch);
+    gap: 1rem;
+  }
+
+  &__close {
+    cursor: pointer;
+    position: absolute;
+    display: block;
+    padding: 0.125rem 0.312rem;
+    line-height: 20px;
+    right: -0.625rem;
+    top: -0.625rem;
+    font-size: 1.5rem;
+    background: #ffffff;
+    border-radius: 1.125rem;
+    border: 1px solid #cfcece;
   }
 }

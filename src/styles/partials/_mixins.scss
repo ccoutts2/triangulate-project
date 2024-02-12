@@ -19,11 +19,11 @@
 
 @mixin button {
   font-size: 0.8rem;
-  font-weight: 600;
+  font-weight: 400;
   @include flex(row, center, center);
   width: 100%;
   background-color: $primary-color;
-  color: $secondary-color;
+  color: $primary-background;
   border: none;
   border-radius: 1.25rem;
   cursor: pointer;
