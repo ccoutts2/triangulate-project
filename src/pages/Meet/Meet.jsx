@@ -5,7 +5,7 @@ import Friends from "../../components/Friends/Friends";
 import PubLocation from "../../components/PubLocation/PubLocation";
 import SelectedFriend from "../../components/SelectedFriend/SelectedFriend";
 import Button from "../../components/Button/Button";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "mapbox-gl/dist/mapbox-gl.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -15,6 +15,7 @@ const Meet = () => {
   const navigate = useNavigate();
   const baseURL = process.env.REACT_APP_FRIENDS_API_URL;
 
+  const params = useParams();
   const [friends, setFriends] = useState(null);
   const [selectedFriend, setSelectedFriend] = useState(null);
 
@@ -22,17 +23,27 @@ const Meet = () => {
     setSelectedFriend(friend);
   };
 
-  const fetchFriends = async () => {
+  // const fetchFriends = async () => {
+  //   try {
+  //     const response = await axios.get(`${baseURL}/friends`);
+  //     setFriends(response.data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
+  const fetchFriends = async (groupId) => {
     try {
-      const response = await axios.get(`${baseURL}/friends`);
-      setFriends(response.data);
+      const { data } = await axios.get(`${baseURL}/users/${groupId}`);
+      setFriends(data);
+      console.log(data);
     } catch (error) {
       console.log(error);
     }
   };
 
   useEffect(() => {
-    fetchFriends();
+    fetchFriends(params.groupId);
   }, []);
 
   const [selectedPub, setSelectedPub] = useState(null);
@@ -90,6 +101,7 @@ const Meet = () => {
           setSelectedPub={setSelectedPub}
           setPubs={setPubs}
           baseURL={baseURL}
+          friends={friends}
         />
         <PubInfo selectedPub={selectedPub} />
         <div className="friends-wrapper">

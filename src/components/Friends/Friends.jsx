@@ -1,6 +1,7 @@
 import "./friends.scss";
 
 const Friends = ({ friends, handleFriendClick }) => {
+  console.log(friends);
   return (
     <aside className="friends">
       <ul className="friends__list">
@@ -8,7 +9,7 @@ const Friends = ({ friends, handleFriendClick }) => {
           friends.map((friend) => {
             return (
               <li
-                key={friend.id}
+                key={friend.user_name}
                 className="friends__item"
                 onClick={() => {
                   handleFriendClick(friend);

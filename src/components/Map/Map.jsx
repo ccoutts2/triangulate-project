@@ -7,7 +7,7 @@ import "https://api.tiles.mapbox.com/mapbox-gl-js/v3.1.0/mapbox-gl.js";
 import "mapbox-gl/dist/mapbox-gl.css";
 import * as geolib from "geolib";
 
-const Map = ({ setSelectedPub, setPubs, baseURL }) => {
+const Map = ({ setSelectedPub, friends, baseURL }) => {
   //   // Setting Map State
 
   const mapboxAccessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
@@ -181,33 +181,27 @@ const Map = ({ setSelectedPub, setPubs, baseURL }) => {
 
   // Add friends data to map
 
-  useMemo(() => {
-    const baseURL = process.env.REACT_APP_FRIENDS_API_URL;
+  useEffect(() => {
+    if (friends) {
+      friends.forEach((friend) => {
+        const { user_name, latitude, longitude } = friend;
+        const marker = new mapboxgl.Marker({
+          color: "#f3180a",
+        })
+          .setLngLat([longitude, latitude])
+          .addTo(map.current);
 
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`${baseURL}/friends`);
-        const friendData = response.data;
-
-        friendData.forEach((friend) => {
-          const marker = new mapboxgl.Marker({
-            color: "#f3180a",
-          })
-            .setLngLat([friend.longitude, friend.latitude])
-            .addTo(map.current);
-
-          const popup = new mapboxgl.Popup({
-            offset: 25,
-          }).setHTML(`<h4>${friend.user_name}</h4>`);
-          marker.setPopup(popup);
-        });
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    fetchData();
+        const popup = new mapboxgl.Popup({
+          offset: 25,
+        }).setHTML(`<h4>${user_name}</h4>`);
+        marker.setPopup(popup);
+      });
+    }
   }, []);
+
+  if (!friends) {
+    return null;
+  }
 
   let listings = null;
 
