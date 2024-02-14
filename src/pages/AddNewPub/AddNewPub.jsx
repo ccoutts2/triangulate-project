@@ -9,6 +9,7 @@ import { CiLogout } from "react-icons/ci";
 
 const AddNewPub = () => {
   const navigate = useNavigate();
+  const [groups, setGroups] = useState(null);
   const [user, setUser] = useState(null);
   const [failedAuth, setFailedAuth] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -21,9 +22,9 @@ const AddNewPub = () => {
     pub: "",
     address: "",
   });
+  const baseURL = process.env.REACT_APP_FRIENDS_API_URL;
 
   useEffect(() => {
-    const baseURL = process.env.REACT_APP_FRIENDS_API_URL;
     const loadData = async () => {
       const token = sessionStorage.getItem("token");
 
@@ -44,6 +45,19 @@ const AddNewPub = () => {
       }
     };
     loadData();
+  }, []);
+
+  const fetchGroups = async () => {
+    try {
+      const { data } = await axios.get(`${baseURL}/groups`);
+      setGroups(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchGroups();
   }, []);
 
   const handleLogout = () => {
@@ -145,6 +159,10 @@ const AddNewPub = () => {
     );
   }
 
+  if (!groups) {
+    return null;
+  }
+
   return (
     <>
       <form className="pub-form" onSubmit={handleSubmit}>
@@ -153,7 +171,7 @@ const AddNewPub = () => {
           label={<CiLogout />}
           onClick={handleLogout}
         />
-        <AddPubForm onChange={onChange} />
+        <AddPubForm groups={groups} onChange={onChange} />
         <PubRating formFields={formFields} onChange={onChange} />
         <div className="pub-form__button-container">
           <Button className="pub-form__button" label="Add Pub" />

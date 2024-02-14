@@ -23,15 +23,6 @@ const Meet = () => {
     setSelectedFriend(friend);
   };
 
-  // const fetchFriends = async () => {
-  //   try {
-  //     const response = await axios.get(`${baseURL}/friends`);
-  //     setFriends(response.data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
   const fetchFriends = async (groupId) => {
     try {
       const { data } = await axios.get(`${baseURL}/users/${groupId}`);

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import "./add-pub-form.scss";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 
-const AddPubForm = ({ onChange }) => {
+const AddPubForm = ({ groups, onChange }) => {
   return (
     <section className="add-pub">
       <h2 className="add-pub__header">
@@ -43,12 +43,11 @@ const AddPubForm = ({ onChange }) => {
           <option className="add-pub__input" value="select a group">
             Select a group
           </option>
-          <option className="add-pub__input" value="1">
-            1
-          </option>
-          <option className="add-pub__input" value="2">
-            2
-          </option>
+          {groups.map((group) => (
+            <option key={group.id} className="add-pub__input" value={group.id}>
+              {group.group_name}
+            </option>
+          ))}
         </select>
       </div>
     </section>

@@ -22,7 +22,7 @@ function Login() {
 
       sessionStorage.setItem("token", response.data.token);
 
-      navigate("/meet");
+      navigate("/groups");
     } catch (error) {
       setError(error.response.data);
     }
