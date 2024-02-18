@@ -1,7 +1,7 @@
 import "./footer.scss";
 import { Link } from "react-router-dom";
 import { GrGroup } from "react-icons/gr";
-import { BsFillPinMapFill } from "react-icons/bs";
+import { CgProfile } from "react-icons/cg";
 import { MdOutlineRateReview } from "react-icons/md";
 
 const Footer = () => {
@@ -10,7 +10,7 @@ const Footer = () => {
       <nav className="footer-nav">
         <ul className="footer-nav__list">
           <li className="footer-nav__item">
-            <Link to="/" className="footer-nav__link">
+            <Link to="/add-pub" className="footer-nav__link">
               <div className="footer-nav__icon-container">
                 <MdOutlineRateReview />
                 Add Rating
@@ -18,10 +18,10 @@ const Footer = () => {
             </Link>
           </li>
           <li className="footer-nav__item">
-            <Link to="/" className="footer-nav__link">
+            <Link to="/profile" className="footer-nav__link">
               <div className="footer-nav__icon-container">
-                <BsFillPinMapFill />
-                Meet
+                <CgProfile />
+                Profile
               </div>
             </Link>
           </li>

@@ -9,7 +9,7 @@
   position: fixed;
   bottom: 0;
   z-index: 10;
-  left: 50%; // Center horizontally
+  left: 50%;
   transform: translateX(-50%);
   @include flex(row, center, stretch);
   background-color: $primary-background;

@@ -156,6 +156,11 @@ const Map = ({ setSelectedPub, friends, baseURL }) => {
 
     const sortedFeatures = features.sort((a, b) => a.distance - b.distance);
 
+    if (!mapContainer.current) {
+      console.error("mapContainer is not initialized.");
+      return;
+    }
+
     return (
       <div className="map__listings">
         {sortedFeatures.map((feature, index) => (

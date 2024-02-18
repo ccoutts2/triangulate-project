@@ -4,8 +4,8 @@
 
 .about-page {
   padding: 0 1rem 1rem;
-  @include flex(column, center, stretch);
-  height: 90vh;
+  @include flex(column, flex-start, stretch);
+  height: 95vh;
 
   @include tablet {
     padding-inline: 2.25rem;
@@ -15,6 +15,10 @@
   @include desktop {
     padding-inline: 5rem;
     @include max-content;
+  }
+
+  &__icon {
+    color: $primary-color;
   }
 
   &__header {

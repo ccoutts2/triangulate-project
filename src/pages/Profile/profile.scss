@@ -1,0 +1,44 @@
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.profile-page {
+  padding: 0 1rem 1rem;
+  @include flex(column, flex-start, stretch);
+  height: 95vh;
+
+  &__login {
+    @include flex(column, center, center);
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $sign-up-color;
+  }
+
+  &__signout-button {
+    background-color: $primary-background;
+    border: 1px solid $primary-color;
+    border-radius: 50%;
+    height: 2rem;
+    width: 2rem;
+    padding: 0;
+
+    &:hover {
+      @include button;
+      width: 20%;
+      transition: 0.5s ease-in-out;
+      &::after {
+        content: "Sign out";
+      }
+    }
+
+    @include tablet {
+      right: 2.25rem;
+    }
+
+    @include desktop {
+      right: 5rem;
+    }
+  }
+}

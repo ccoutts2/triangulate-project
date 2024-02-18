@@ -1,0 +1,41 @@
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.group-details {
+  height: 50vh;
+  z-index: 2;
+
+  @include desktop {
+    @include max-content;
+  }
+
+  &__icon {
+    color: $primary-color;
+    display: inline;
+    padding-left: 1rem;
+  }
+
+  &__header {
+    display: inline;
+    font-weight: 400;
+  }
+
+  &__info {
+    padding-inline: 1rem;
+  }
+
+  &__h1 {
+    font-weight: 400;
+  }
+
+  &__image {
+    border-radius: 2rem;
+    width: 100%;
+    padding: 1rem;
+  }
+
+  &__button-container {
+    padding: 2rem 2rem 0;
+  }
+}

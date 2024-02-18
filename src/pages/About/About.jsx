@@ -10,7 +10,7 @@ const About = () => {
     <main className="about-page">
       <section className="about-page__text-section">
         <div className="about-page__container">
-          <Link to="/" className="add-pub__icon">
+          <Link to="/" className="about-page__icon">
             <IoArrowBackCircleOutline />
           </Link>
           <h1 className="about-page__header about-page__header--h1">Back to home</h1>

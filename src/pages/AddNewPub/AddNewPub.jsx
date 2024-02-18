@@ -5,7 +5,8 @@ import { useNavigate, Link } from "react-router-dom";
 import PubRating from "../../components/PubRating/PubRating";
 import AddPubForm from "../../components/AddPubForm/AddPubForm";
 import Button from "../../components/Button/Button";
-import { CiLogout } from "react-icons/ci";
+
+import { IoArrowBackCircleOutline } from "react-icons/io5";
 
 const AddNewPub = () => {
   const navigate = useNavigate();
@@ -59,12 +60,6 @@ const AddNewPub = () => {
   useEffect(() => {
     fetchGroups();
   }, []);
-
-  const handleLogout = () => {
-    sessionStorage.removeItem("token");
-    setUser(null);
-    setFailedAuth(true);
-  };
 
   if (failedAuth) {
     return (
@@ -165,12 +160,11 @@ const AddNewPub = () => {
 
   return (
     <>
+      <Link to="/groups" className="pub-form__icon">
+        <IoArrowBackCircleOutline />
+      </Link>{" "}
+      <h2 className="pub-form__header">Back to Groups</h2>
       <form className="pub-form" onSubmit={handleSubmit}>
-        <Button
-          className="pub-form__signout-button"
-          label={<CiLogout />}
-          onClick={handleLogout}
-        />
         <AddPubForm groups={groups} onChange={onChange} />
         <PubRating formFields={formFields} onChange={onChange} />
         <div className="pub-form__button-container">

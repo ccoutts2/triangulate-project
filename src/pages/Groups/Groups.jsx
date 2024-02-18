@@ -5,11 +5,10 @@ import Button from "../../components/Button/Button";
 import axios from "axios";
 import hero from "../../assets/images/hero.svg";
 import Popup from "reactjs-popup";
+import { FaArrowRightLong } from "react-icons/fa6";
+import map from "../../assets/images/map.png";
 
 const Groups = () => {
-  //   const { groupdId } = useParams();
-  const navigate = useNavigate();
-
   const baseURL = process.env.REACT_APP_FRIENDS_API_URL;
   const [groups, setGroups] = useState(null);
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -68,16 +67,26 @@ const Groups = () => {
       <section className="groups-page__product-cards">
         {groups.map((group) => {
           return (
-            <Link to={`/meet/${group.id}/pubs`} className="groups-page__link">
-              <article key={group.id} className="groups-page__product-card">
-                <img
-                  className="groups-page__image"
-                  src={hero}
-                  alt="arty picture of people sitting at a bar"
-                />
-                <h3 className="groups-page__title">{group.group_name}</h3>
-              </article>
-            </Link>
+            <article key={group.id} className="groups-page__product-card">
+              <div className="groups-page__link-container">
+                <Link to={`/meet/${group.id}/pubs`} className="groups-page__link">
+                  <img
+                    className="groups-page__image"
+                    src={map}
+                    alt="picture of map of the UK"
+                  />
+
+                  <h3 className="groups-page__title">{group.group_name}</h3>
+                </Link>
+              </div>
+
+              <Link to={`/groups/${group.id}`} className="groups-page__link">
+                <p>
+                  Details
+                  <span className="groups-page__icon">{<FaArrowRightLong />}</span>
+                </p>
+              </Link>
+            </article>
           );
         })}
       </section>

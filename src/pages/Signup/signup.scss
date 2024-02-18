@@ -5,11 +5,11 @@
 
 .signup-page {
   padding-inline: 1rem;
-  height: 120vh;
-  @include flex(column, space-around, center);
+  height: 110vh;
+  @include flex(column, space-evenly, center);
 
   &__welcome {
-    height: 10%;
+    height: 8%;
   }
 
   &__form {

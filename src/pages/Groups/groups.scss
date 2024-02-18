@@ -5,23 +5,45 @@
 .groups-page {
   padding-inline: 1rem;
 
+  &__header {
+    font-weight: 400;
+  }
+
   &__product-cards {
     @include flex(row, space-between, stretch);
-    gap: 0.25rem;
-    flex-wrap: wrap;
+    gap: 1rem;
+    overflow-y: hidden;
+    overflow-x: auto;
+    width: 100%;
+  }
+
+  &__product-card {
+    padding: 0.5rem 0;
+    width: 20rem;
+    @include flex(column, space-between, stretch);
   }
 
   &__link {
-    width: 45%;
+    text-decoration: none;
+    font-size: 0.8rem;
+    color: $primary-color;
   }
 
   &__image {
     width: 100%;
+    border-radius: 1rem;
   }
 
   &__title {
     font-size: 0.8rem;
     height: 100%;
+    display: block;
+    font-weight: 400;
+    width: 15rem;
+  }
+
+  &__icon {
+    padding-left: 0.25rem;
   }
 }
 

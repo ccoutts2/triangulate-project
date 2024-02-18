@@ -3,39 +3,23 @@
 @use "../../styles/partials/variables" as *;
 
 .pub-form {
-  height: 150vh;
+  height: 160vh;
   z-index: 2;
 
   @include desktop {
     @include max-content;
   }
 
-  &__signout-button {
-    background-color: $primary-background;
-    border: 1px solid $primary-color;
-    border-radius: 50%;
-    height: 2rem;
-    width: 2rem;
-    position: absolute;
-    right: 1rem;
-    padding: 0;
+  &__icon {
+    color: $primary-color;
+    padding-left: 1rem;
+  }
 
-    &:hover {
-      @include button;
-      width: 20%;
-      transition: 0.5s ease-in-out;
-      &::after {
-        content: "Sign out";
-      }
-    }
-
-    @include tablet {
-      right: 2.25rem;
-    }
-
-    @include desktop {
-      right: 5rem;
-    }
+  &__header {
+    display: inline;
+    padding-left: 0.25rem;
+    font-size: 1.2rem;
+    font-weight: 400;
   }
 
   &__login {
@@ -49,7 +33,7 @@
   }
 
   &__button-container {
-    padding: 2rem 1rem 0;
+    padding: 1rem 1rem 0;
 
     @include tablet {
       padding-inline: 2.25rem;

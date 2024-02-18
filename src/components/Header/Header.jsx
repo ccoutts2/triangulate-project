@@ -26,8 +26,8 @@ const Header = () => {
               </Link>
             </li>
             <li className="nav__item">
-              <Link className="nav__link" to={"/meet"}>
-                MEET
+              <Link className="nav__link" to={"/profile"}>
+                PROFILE
               </Link>
             </li>
             <li className="nav__item">
