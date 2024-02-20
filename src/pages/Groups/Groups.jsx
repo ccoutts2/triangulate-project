@@ -81,7 +81,7 @@ const Groups = () => {
               </div>
 
               <Link to={`/groups/${group.id}`} className="groups-page__link">
-                <p>
+                <p className="groups-page__text">
                   Details
                   <span className="groups-page__icon">{<FaArrowRightLong />}</span>
                 </p>

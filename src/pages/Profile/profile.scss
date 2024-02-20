@@ -7,6 +7,31 @@
   @include flex(column, flex-start, stretch);
   height: 95vh;
 
+  &__header {
+    font-weight: 400;
+    padding-bottom: 1rem;
+  }
+
+  &__groups-text {
+    padding: 0.5rem 0;
+  }
+
+  &__groups-link {
+    text-decoration: none;
+    color: $sign-up-color;
+  }
+
+  &__groups-container {
+    padding: 0.25rem 0;
+    border: 0.5px solid $primary-color;
+    margin: 0.25rem 0;
+    border-radius: 1rem;
+  }
+
+  &__groups {
+    padding-inline: 0.25rem;
+  }
+
   &__login {
     @include flex(column, center, center);
   }
@@ -17,28 +42,6 @@
   }
 
   &__signout-button {
-    background-color: $primary-background;
-    border: 1px solid $primary-color;
-    border-radius: 50%;
-    height: 2rem;
-    width: 2rem;
-    padding: 0;
-
-    &:hover {
-      @include button;
-      width: 20%;
-      transition: 0.5s ease-in-out;
-      &::after {
-        content: "Sign out";
-      }
-    }
-
-    @include tablet {
-      right: 2.25rem;
-    }
-
-    @include desktop {
-      right: 5rem;
-    }
+    margin-top: 2rem;
   }
 }

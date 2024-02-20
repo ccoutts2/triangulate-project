@@ -7,15 +7,15 @@ const Friends = ({ friends, handleFriendClick }) => {
   const navigate = useNavigate();
   const { groupId } = useParams();
 
-  const onClick = (groupId) => {
-    navigate(`/groups/${groupId}/add`);
+  const onClick = () => {
+    navigate(`/groups/${groupId}`);
   };
 
   if (!friends || friends.length === 0) {
     return (
       <div>
-        <p>Is this map for yourself?</p>
-        <p>If not, add collaborators</p>
+        <p>This group has no users in it</p>
+        <p>Join it and ask your friends to join too</p>
         <Button
           className="friends__button"
           label={<MdGroupAdd />}

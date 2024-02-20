@@ -42,8 +42,16 @@
     width: 15rem;
   }
 
+  &__text {
+    padding-top: 0.25rem;
+  }
+
   &__icon {
     padding-left: 0.25rem;
+  }
+
+  &__button {
+    margin-top: 2rem;
   }
 }
 

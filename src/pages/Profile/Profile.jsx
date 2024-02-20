@@ -49,8 +49,10 @@ const Profile = () => {
   }, []);
 
   useEffect(() => {
-    fetchUsers(userId);
-  }, [userId]);
+    if (user) {
+      fetchUsers(user.id);
+    }
+  }, [user]);
 
   const handleLogout = () => {
     sessionStorage.removeItem("token");
@@ -87,14 +89,27 @@ const Profile = () => {
   return (
     <main className="profile-page">
       <h1 className="profile-page__header">Profile</h1>
+
       <p className="profile-page__text">Why hello, {user.user_name}</p>
       <p className="profile-page__text">
         Here's your favourite drink: {user.favourite_drink}
       </p>
-      <p className="profile-page__text">You are in</p>
+      <p className="profile-page__groups-text">Groups you are in:</p>
+      {groupUsers.map((group) => {
+        return (
+          <Link
+            to={`/meet/${group.id}/pubs`}
+            key={group.id}
+            className="profile-page__groups-link">
+            <div className="profile-page__groups-container">
+              <p className="profile-page__groups">{group.group_name}</p>
+            </div>
+          </Link>
+        );
+      })}
       <Button
         className="profile-page__signout-button"
-        label={<CiLogout />}
+        label="Sign Out"
         onClick={handleLogout}
       />
     </main>

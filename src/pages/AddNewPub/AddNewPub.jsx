@@ -142,7 +142,7 @@ const AddNewPub = () => {
       setTimeout(() => {
         setFormSubmitted(false);
         navigate(`/meet/${formFields.group}/pubs`);
-      }, 2500);
+      }, 1000);
     }
   };
 

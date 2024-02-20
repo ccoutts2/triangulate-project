@@ -107,11 +107,13 @@ const GroupDetails = () => {
         <IoArrowBackCircleOutline />
       </Link>{" "}
       <h2 className="group-details__header">Back to Groups</h2>
-      <img
-        className="group-details__image"
-        src={hero}
-        alt="picture of map of the UK"
-      />
+      <Link to={`/meet/${groupId}/pubs`} className="group-details__header">
+        <img
+          className="group-details__image"
+          src={hero}
+          alt="picture of map of the UK"
+        />
+      </Link>
       <div className="group-details__info">
         <p className="group-details__text">You are viewing:</p>
         <h1 className="group-details__h1">{groupDetails.group_name}</h1>
