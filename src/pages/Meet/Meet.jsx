@@ -87,13 +87,15 @@ const Meet = () => {
             Pub Marker:<span className="map-wrapper__dot"></span>
           </p>
         </div>
-        <Map
-          handlePubClick={handlePubClick}
-          setSelectedPub={setSelectedPub}
-          setPubs={setPubs}
-          baseURL={baseURL}
-          friends={friends}
-        />
+        {friends && selectedPub && (
+          <Map
+            handlePubClick={handlePubClick}
+            setSelectedPub={setSelectedPub}
+            setPubs={setPubs}
+            baseURL={baseURL}
+            friends={friends}
+          />
+        )}
         <PubInfo selectedPub={selectedPub} />
         <div className="friends-wrapper">
           <Friends friends={friends} handleFriendClick={handleFriendClick} />
